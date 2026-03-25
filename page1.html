@@ -2,11 +2,14 @@
 <html>
 <head>
   <title>Retro Loading</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <style>
     body {
       background: black;
       margin: 0;
-      font-family: monospace;
+      font-family: 'Press Start 2P', monospace;
       color: #66F6BB;
     }
 
@@ -16,21 +19,22 @@
     }
 
     .top-text {
-      display: flex;
-      align-items: center;
-      gap: 260px;
-      font-size: 44px;
-      font-weight: bold;
-      margin-bottom: 15px;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .bar-box {
+      position: relative;
+      width: 850px;
+      margin: auto;
     }
 
     progress {
-      width: 850px;
+      width: 100%;
       height: 65px;
       border: 6px solid #66F6BB;
       background: black;
       padding: 6px;
-      box-sizing: border-box;
     }
 
     progress::-webkit-progress-bar {
@@ -41,32 +45,30 @@
       background: repeating-linear-gradient(
         to right,
         #66F6BB 0px,
-        #66F6BB 26px,
-        black 26px,
-        black 36px
+        #66F6BB 20px,
+        black 20px,
+        black 30px
       );
     }
 
-    progress::-moz-progress-bar {
-      background: repeating-linear-gradient(
-        to right,
-        #66F6BB 0px,
-        #66F6BB 26px,
-        black 26px,
-        black 36px
-      );
+    #percent {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
 
   <div class="loading-box">
-    <div class="top-text">
-      <span>Loading</span>
+    <div class="top-text">Loading</div>
+
+    <div class="bar-box">
+      <progress id="bar" value="0" max="100"></progress>
       <span id="percent">0%</span>
     </div>
-
-    <progress id="bar" value="0" max="100"></progress>
   </div>
 
   <script>
