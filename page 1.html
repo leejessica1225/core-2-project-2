@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Retro Loading</title>
+  <style>
+    body {
+      background: black;
+      margin: 0;
+      font-family: monospace;
+      color: white;
+    }
+
+    .loading-box {
+      width: 850px;
+      margin: 200px auto;
+    }
+
+    .top-text {
+      display: flex;
+      align-items: center;
+      gap: 260px;
+      font-size: 44px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    progress {
+      width: 850px;
+      height: 65px;
+      border: 6px solid #66F6BB;
+      background: black;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+
+    progress::-webkit-progress-bar {
+      background: black;
+    }
+
+    progress::-webkit-progress-value {
+      background: repeating-linear-gradient(
+        to right,
+        #66F6BB 0px,
+        #66F6BB 26px,
+        black 26px,
+        black 36px
+      );
+    }
+
+    progress::-moz-progress-bar {
+      background: repeating-linear-gradient(
+        to right,
+        #66F6BB 0px,
+        #66F6BB 26px,
+        black 26px,
+        black 36px
+      );
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loading-box">
+    <div class="top-text">
+      <span>Loading</span>
+      <span id="percent">62%</span>
+    </div>
+
+    <progress id="bar" value="62" max="100"></progress>
+  </div>
+
+  <script>
+    let bar = document.getElementById("bar");
+    let percent = document.getElementById("percent");
+
+    let num = 62;
+
+    function move() {
+      if (num < 100) {
+        num = num + 1;
+        bar.value = num;
+        percent.innerText = num + "%";
+        setTimeout(move, 80);
+      }
+    }
+
+    move();
+  </script>
+
+</body>
+</html>
