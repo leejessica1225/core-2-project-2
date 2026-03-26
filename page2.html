@@ -26,7 +26,7 @@
       padding: 20px 30px;
       font-size: 40px;
       display: flex;
-      justify-content: space-between;  /* 핵심 */
+      justify-content: space-between;
       align-items: center;
     }
 
@@ -41,16 +41,26 @@
     input::placeholder {
       color: black;
       opacity: 0.5;
-      font-family: 'cactus';
+    }
+
+    .search-btn {
+      cursor: pointer;   /* 마우스 올리면 손모양 */
     }
   </style>
 </head>
 <body>
 
   <div class="box">
-    <input type="text" placeholder="type something...">
-    <span>search</span>
+    <input id="text" type="text" placeholder="type something...">
+    <span class="search-btn" onclick="go()">search</span>
   </div>
+
+  <script>
+    function go() {
+      let word = document.getElementById("text").value;
+      console.log(word);
+    }
+  </script>
 
 </body>
 </html>
