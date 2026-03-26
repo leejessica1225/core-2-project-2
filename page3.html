@@ -20,22 +20,6 @@
       position: relative;
     }
 
-    .arrow-left {
-      position: absolute;
-      top: 50%;
-      left: 30px;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    .arrow-right {
-      position: absolute;
-      top: 50%;
-      right: 30px;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
     .gallery-area {
       position: absolute;
       top: 100px;
@@ -55,6 +39,7 @@
       top: 30px;
       left: 200px;
       z-index: 3;
+      background-color: #888888;
     }
 
     .image-top-left {
@@ -63,6 +48,7 @@
       top: 80px;
       left: 30px;
       z-index: 2;
+      background-color: #cc6600;
     }
 
     .image-bottom-left {
@@ -71,6 +57,7 @@
       bottom: 40px;
       left: 0px;
       z-index: 2;
+      background-color: #aabbcc;
     }
 
     .image-top-right {
@@ -79,6 +66,7 @@
       top: 60px;
       right: 0px;
       z-index: 2;
+      background-color: #cc3300;
     }
 
     .image-bottom-right {
@@ -87,6 +75,7 @@
       bottom: 40px;
       right: 0px;
       z-index: 1;
+      background: linear-gradient(to right, #cc88ff, #ff44aa);
     }
 
     .image-bottom-center1 {
@@ -95,6 +84,7 @@
       bottom: 40px;
       left: 220px;
       z-index: 2;
+      background-color: #dddddd;
     }
 
     .image-bottom-center2 {
@@ -103,6 +93,7 @@
       bottom: 40px;
       left: 380px;
       z-index: 2;
+      background-color: #ccddee;
     }
 
     .white-box {
@@ -112,6 +103,7 @@
       top: 10px;
       right: 170px;
       z-index: 2;
+      background-color: #ddddff;
     }
 
   </style>
@@ -119,107 +111,70 @@
 <body>
   <div class="page">
 
-    <div class="arrow-left" onclick="goLeft()">←</div>
-    <div class="arrow-right" onclick="goRight()">→</div>
+    <svg onclick="goLeft()" style="position:absolute; top:50%; left:20px; cursor:pointer;" width="40" height="20" viewBox="0 0 80 40">
+      <polygon points="0,20 28,0 28,40" fill="white"/>
+      <rect x="28" y="18" width="52" height="4" fill="white"/>
+    </svg>
+
+    <svg onclick="goRight()" style="position:absolute; top:50%; right:20px; cursor:pointer;" width="40" height="20" viewBox="0 0 80 40">
+      <polygon points="80,20 52,0 52,40" fill="white"/>
+      <rect x="0" y="18" width="52" height="4" fill="white"/>
+    </svg>
 
     <div class="gallery-area">
       <div class="my-image image-main" id="img-main"></div>
-      <div class="my-image image-top-left" id="img-top-left"></div>
-      <div class="my-image image-bottom-left" id="img-bottom-left"></div>
-      <div class="my-image image-top-right" id="img-top-right"></div>
-      <div class="my-image image-bottom-right" id="img-bottom-right"></div>
-      <div class="my-image image-bottom-center1" id="img-center1"></div>
-      <div class="my-image image-bottom-center2" id="img-center2"></div>
-      <div class="white-box" id="img-white"></div>
+      <div class="my-image image-top-left"></div>
+      <div class="my-image image-bottom-left"></div>
+      <div class="my-image image-top-right"></div>
+      <div class="my-image image-bottom-right"></div>
+      <div class="my-image image-bottom-center1"></div>
+      <div class="my-image image-bottom-center2"></div>
+      <div class="white-box"></div>
     </div>
 
   </div>
 
   <script>
 
-    // 갤러리 1번
-    var gallery1Main = "#888888";
-    var gallery1TopLeft = "#cc6600";
-    var gallery1BottomLeft = "#aabbcc";
-    var gallery1TopRight = "#cc3300";
-    var gallery1BottomRight = "linear-gradient(to right, #cc88ff, #ff44aa)";
-    var gallery1Center1 = "#dddddd";
-    var gallery1Center2 = "#ccddee";
-    var gallery1White = "#ddddff";
-
-    // 갤러리 2번
-    var gallery2Main = "#336699";
-    var gallery2TopLeft = "#ffaa00";
-    var gallery2BottomLeft = "#ff6677";
-    var gallery2TopRight = "#44bb88";
-    var gallery2BottomRight = "linear-gradient(to right, #ffdd00, #ff6600)";
-    var gallery2Center1 = "#99aaff";
-    var gallery2Center2 = "#ffccaa";
-    var gallery2White = "#ccffee";
-
-    // 갤러리 3번
-    var gallery3Main = "#222222";
-    var gallery3TopLeft = "#ff2255";
-    var gallery3BottomLeft = "#22ddff";
-    var gallery3TopRight = "#ffee00";
-    var gallery3BottomRight = "linear-gradient(to right, #00ffaa, #0055ff)";
-    var gallery3Center1 = "#ff88ff";
-    var gallery3Center2 = "#88ffcc";
-    var gallery3White = "#ffdddd";
-
-    // 지금 몇 번째 갤러리인지
-    var myCurrentNumber = 1;
-
-    function showGallery() {
-      if (myCurrentNumber == 1) {
-        document.getElementById("img-main").style.background = gallery1Main;
-        document.getElementById("img-top-left").style.background = gallery1TopLeft;
-        document.getElementById("img-bottom-left").style.background = gallery1BottomLeft;
-        document.getElementById("img-top-right").style.background = gallery1TopRight;
-        document.getElementById("img-bottom-right").style.background = gallery1BottomRight;
-        document.getElementById("img-center1").style.background = gallery1Center1;
-        document.getElementById("img-center2").style.background = gallery1Center2;
-        document.getElementById("img-white").style.background = gallery1White;
-      }
-      if (myCurrentNumber == 2) {
-        document.getElementById("img-main").style.background = gallery2Main;
-        document.getElementById("img-top-left").style.background = gallery2TopLeft;
-        document.getElementById("img-bottom-left").style.background = gallery2BottomLeft;
-        document.getElementById("img-top-right").style.background = gallery2TopRight;
-        document.getElementById("img-bottom-right").style.background = gallery2BottomRight;
-        document.getElementById("img-center1").style.background = gallery2Center1;
-        document.getElementById("img-center2").style.background = gallery2Center2;
-        document.getElementById("img-white").style.background = gallery2White;
-      }
-      if (myCurrentNumber == 3) {
-        document.getElementById("img-main").style.background = gallery3Main;
-        document.getElementById("img-top-left").style.background = gallery3TopLeft;
-        document.getElementById("img-bottom-left").style.background = gallery3BottomLeft;
-        document.getElementById("img-top-right").style.background = gallery3TopRight;
-        document.getElementById("img-bottom-right").style.background = gallery3BottomRight;
-        document.getElementById("img-center1").style.background = gallery3Center1;
-        document.getElementById("img-center2").style.background = gallery3Center2;
-        document.getElementById("img-white").style.background = gallery3White;
-      }
-    }
+    var myCurrentColor = "color1";
 
     function goRight() {
-      myCurrentNumber = myCurrentNumber + 1;
-      if (myCurrentNumber == 4) {
-        myCurrentNumber = 1;
+      if (myCurrentColor == "color1") {
+        document.getElementById("img-main").style.backgroundColor = "#336699";
+        myCurrentColor = "color2";
+      } else if (myCurrentColor == "color2") {
+        document.getElementById("img-main").style.backgroundColor = "#222222";
+        myCurrentColor = "color3";
+      } else if (myCurrentColor == "color3") {
+        document.getElementById("img-main").style.backgroundColor = "#cc4400";
+        myCurrentColor = "color4";
+      } else if (myCurrentColor == "color4") {
+        document.getElementById("img-main").style.backgroundColor = "#226633";
+        myCurrentColor = "color5";
+      } else if (myCurrentColor == "color5") {
+        document.getElementById("img-main").style.backgroundColor = "#888888";
+        myCurrentColor = "color1";
       }
-      showGallery();
     }
 
     function goLeft() {
-      myCurrentNumber = myCurrentNumber - 1;
-      if (myCurrentNumber == 0) {
-        myCurrentNumber = 3;
+      if (myCurrentColor == "color1") {
+        document.getElementById("img-main").style.backgroundColor = "#226633";
+        myCurrentColor = "color5";
+      } else if (myCurrentColor == "color2") {
+        document.getElementById("img-main").style.backgroundColor = "#888888";
+        myCurrentColor = "color1";
+      } else if (myCurrentColor == "color3") {
+        document.getElementById("img-main").style.backgroundColor = "#336699";
+        myCurrentColor = "color2";
+      } else if (myCurrentColor == "color4") {
+        document.getElementById("img-main").style.backgroundColor = "#222222";
+        myCurrentColor = "color3";
+      } else if (myCurrentColor == "color5") {
+        document.getElementById("img-main").style.backgroundColor = "#cc4400";
+        myCurrentColor = "color4";
       }
-      showGallery();
     }
-
-    showGallery();
 
   </script>
 </body>
