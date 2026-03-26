@@ -1,80 +1,226 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gallery</title>
-
+  <title>gallery</title>
   <style>
+
     body {
-      margin: 0;
-      background: #1400d9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background-color: blue;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      font-family: monospace;
+      color: white;
     }
 
-    img {
-      width: 600px;
-      height: 400px;
+    .page {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .arrow-left {
+      position: absolute;
+      top: 50%;
+      left: 30px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .arrow-right {
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .gallery-area {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      right: 100px;
+      bottom: 80px;
+    }
+
+    .my-image {
+      position: absolute;
       object-fit: cover;
     }
 
-    .arrow {
+    .image-main {
+      width: 520px;
+      height: 430px;
+      top: 30px;
+      left: 200px;
+      z-index: 3;
+    }
+
+    .image-top-left {
+      width: 200px;
+      height: 220px;
+      top: 80px;
+      left: 30px;
+      z-index: 2;
+    }
+
+    .image-bottom-left {
+      width: 220px;
+      height: 220px;
+      bottom: 40px;
+      left: 0px;
+      z-index: 2;
+    }
+
+    .image-top-right {
+      width: 200px;
+      height: 220px;
+      top: 60px;
+      right: 0px;
+      z-index: 2;
+    }
+
+    .image-bottom-right {
+      width: 300px;
+      height: 200px;
+      bottom: 40px;
+      right: 0px;
+      z-index: 1;
+    }
+
+    .image-bottom-center1 {
+      width: 160px;
+      height: 160px;
+      bottom: 40px;
+      left: 220px;
+      z-index: 2;
+    }
+
+    .image-bottom-center2 {
+      width: 240px;
+      height: 160px;
+      bottom: 40px;
+      left: 380px;
+      z-index: 2;
+    }
+
+    .white-box {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      font-size: 60px;
-      cursor: pointer;
-      user-select: none;
+      width: 160px;
+      height: 120px;
+      top: 10px;
+      right: 170px;
+      z-index: 2;
     }
 
-    .left {
-      left: 20px;
-    }
-
-    .right {
-      right: 20px;
-    }
   </style>
 </head>
 <body>
+  <div class="page">
 
-  <div class="arrow left" onclick="prev()">←</div>
+    <div class="arrow-left" onclick="goLeft()">←</div>
+    <div class="arrow-right" onclick="goRight()">→</div>
 
-  <img id="photo" src="https://picsum.photos/800/600?1">
+    <div class="gallery-area">
+      <div class="my-image image-main" id="img-main"></div>
+      <div class="my-image image-top-left" id="img-top-left"></div>
+      <div class="my-image image-bottom-left" id="img-bottom-left"></div>
+      <div class="my-image image-top-right" id="img-top-right"></div>
+      <div class="my-image image-bottom-right" id="img-bottom-right"></div>
+      <div class="my-image image-bottom-center1" id="img-center1"></div>
+      <div class="my-image image-bottom-center2" id="img-center2"></div>
+      <div class="white-box" id="img-white"></div>
+    </div>
 
-  <div class="arrow right" onclick="next()">→</div>
+  </div>
 
   <script>
-    let images = [
-      "https://picsum.photos/800/600?1",
-      "https://picsum.photos/800/600?2",
-      "https://picsum.photos/800/600?3"
-    ];
 
-    let index = 0;
+    // 갤러리 1번
+    var gallery1Main = "#888888";
+    var gallery1TopLeft = "#cc6600";
+    var gallery1BottomLeft = "#aabbcc";
+    var gallery1TopRight = "#cc3300";
+    var gallery1BottomRight = "linear-gradient(to right, #cc88ff, #ff44aa)";
+    var gallery1Center1 = "#dddddd";
+    var gallery1Center2 = "#ccddee";
+    var gallery1White = "#ddddff";
 
-    function next() {
-      index = index + 1;
+    // 갤러리 2번
+    var gallery2Main = "#336699";
+    var gallery2TopLeft = "#ffaa00";
+    var gallery2BottomLeft = "#ff6677";
+    var gallery2TopRight = "#44bb88";
+    var gallery2BottomRight = "linear-gradient(to right, #ffdd00, #ff6600)";
+    var gallery2Center1 = "#99aaff";
+    var gallery2Center2 = "#ffccaa";
+    var gallery2White = "#ccffee";
 
-      if (index > 2) {
-        index = 0;
+    // 갤러리 3번
+    var gallery3Main = "#222222";
+    var gallery3TopLeft = "#ff2255";
+    var gallery3BottomLeft = "#22ddff";
+    var gallery3TopRight = "#ffee00";
+    var gallery3BottomRight = "linear-gradient(to right, #00ffaa, #0055ff)";
+    var gallery3Center1 = "#ff88ff";
+    var gallery3Center2 = "#88ffcc";
+    var gallery3White = "#ffdddd";
+
+    // 지금 몇 번째 갤러리인지
+    var myCurrentNumber = 1;
+
+    function showGallery() {
+      if (myCurrentNumber == 1) {
+        document.getElementById("img-main").style.background = gallery1Main;
+        document.getElementById("img-top-left").style.background = gallery1TopLeft;
+        document.getElementById("img-bottom-left").style.background = gallery1BottomLeft;
+        document.getElementById("img-top-right").style.background = gallery1TopRight;
+        document.getElementById("img-bottom-right").style.background = gallery1BottomRight;
+        document.getElementById("img-center1").style.background = gallery1Center1;
+        document.getElementById("img-center2").style.background = gallery1Center2;
+        document.getElementById("img-white").style.background = gallery1White;
       }
-
-      document.getElementById("photo").src = images[index];
+      if (myCurrentNumber == 2) {
+        document.getElementById("img-main").style.background = gallery2Main;
+        document.getElementById("img-top-left").style.background = gallery2TopLeft;
+        document.getElementById("img-bottom-left").style.background = gallery2BottomLeft;
+        document.getElementById("img-top-right").style.background = gallery2TopRight;
+        document.getElementById("img-bottom-right").style.background = gallery2BottomRight;
+        document.getElementById("img-center1").style.background = gallery2Center1;
+        document.getElementById("img-center2").style.background = gallery2Center2;
+        document.getElementById("img-white").style.background = gallery2White;
+      }
+      if (myCurrentNumber == 3) {
+        document.getElementById("img-main").style.background = gallery3Main;
+        document.getElementById("img-top-left").style.background = gallery3TopLeft;
+        document.getElementById("img-bottom-left").style.background = gallery3BottomLeft;
+        document.getElementById("img-top-right").style.background = gallery3TopRight;
+        document.getElementById("img-bottom-right").style.background = gallery3BottomRight;
+        document.getElementById("img-center1").style.background = gallery3Center1;
+        document.getElementById("img-center2").style.background = gallery3Center2;
+        document.getElementById("img-white").style.background = gallery3White;
+      }
     }
 
-    function prev() {
-      index = index - 1;
-
-      if (index < 0) {
-        index = 2;
+    function goRight() {
+      myCurrentNumber = myCurrentNumber + 1;
+      if (myCurrentNumber == 4) {
+        myCurrentNumber = 1;
       }
-
-      document.getElementById("photo").src = images[index];
+      showGallery();
     }
+
+    function goLeft() {
+      myCurrentNumber = myCurrentNumber - 1;
+      if (myCurrentNumber == 0) {
+        myCurrentNumber = 3;
+      }
+      showGallery();
+    }
+
+    showGallery();
+
   </script>
-
 </body>
 </html>
