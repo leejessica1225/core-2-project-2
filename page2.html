@@ -21,12 +21,13 @@
     }
 
     .box {
+      width: 600px;
       border: 2px solid black;
       padding: 20px 30px;
       font-size: 40px;
       display: flex;
+      justify-content: space-between;  /* 핵심 */
       align-items: center;
-      gap: 20px;
     }
 
     input {
@@ -34,14 +35,21 @@
       outline: none;
       font-size: 40px;
       font-family: 'cactus';
+      width: 70%;
+    }
+
+    input::placeholder {
+      color: black;
+      opacity: 0.5;
+      font-family: 'cactus';
     }
   </style>
 </head>
 <body>
 
   <div class="box">
+    <input type="text" placeholder="type something...">
     <span>search</span>
-    <input type="text">
   </div>
 
 </body>
