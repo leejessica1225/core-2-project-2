@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gallery</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #1400d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    img {
+      width: 600px;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 60px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .left {
+      left: 20px;
+    }
+
+    .right {
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="arrow left" onclick="prev()">←</div>
+
+  <img id="photo" src="https://picsum.photos/800/600?1">
+
+  <div class="arrow right" onclick="next()">→</div>
+
+  <script>
+    let images = [
+      "https://picsum.photos/800/600?1",
+      "https://picsum.photos/800/600?2",
+      "https://picsum.photos/800/600?3"
+    ];
+
+    let index = 0;
+
+    function next() {
+      index = index + 1;
+
+      if (index > 2) {
+        index = 0;
+      }
+
+      document.getElementById("photo").src = images[index];
+    }
+
+    function prev() {
+      index = index - 1;
+
+      if (index < 0) {
+        index = 2;
+      }
+
+      document.getElementById("photo").src = images[index];
+    }
+  </script>
+
+</body>
+</html>
