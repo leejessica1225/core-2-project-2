@@ -11,27 +11,38 @@
 
     body {
       background-color: white;
-      text-align: center;
-      margin-top: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
       font-family: 'cactus';
       color: black;
     }
 
-    input {
-      width: 500px;
-      height: 80px;
-      font-size: 40px;
-      padding-left: 20px;
-      font-family: 'cactus';
+    .box {
       border: 2px solid black;
-      border-radius: 0;
+      padding: 20px 30px;
+      font-size: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    input {
+      border: none;
       outline: none;
+      font-size: 40px;
+      font-family: 'cactus';
     }
   </style>
 </head>
 <body>
 
-  <input type="text" placeholder="type something...">
+  <div class="box">
+    <span>search</span>
+    <input type="text">
+  </div>
 
 </body>
 </html>
