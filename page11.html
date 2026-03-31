@@ -20,12 +20,8 @@
       color: #66F6BB;
     }
 
-    .wrapper {
-      text-align: center;
-    }
-
     .container {
-      display: inline-block;
+      width: 500px;
       text-align: left;
     }
 
@@ -34,13 +30,18 @@
       align-items: center;
       margin-bottom: 30px;
       font-size: 60px;
+      height: 70px;
     }
 
     .line2 {
       display: flex;
       align-items: center;
       font-size: 60px;
-      min-height: 70px;
+      height: 70px;
+    }
+
+    #typing {
+      min-width: 280px;
     }
 
     .cursor {
@@ -77,25 +78,22 @@
 
     #typedText {
       display: none;
+      min-width: 180px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="wrapper">
-    <div class="container">
+  <div class="container">
+    <div class="line1">
+      <div id="typing"></div>
+      <div class="cursor" id="cursorTop"></div>
+    </div>
 
-      <div class="line1">
-        <div id="typing"></div>
-        <div class="cursor" id="cursorTop"></div>
-      </div>
-
-      <div class="line2">
-        <div id="typedText"></div>
-        <div class="cursor2" id="cursorBottom"></div>
-      </div>
-
+    <div class="line2">
+      <div id="typedText"></div>
+      <div class="cursor2" id="cursorBottom"></div>
     </div>
   </div>
 
