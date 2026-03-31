@@ -20,28 +20,31 @@
       color: #66F6BB;
     }
 
-    .container {
+    .box {
       width: 500px;
-      text-align: left;
     }
 
     .line1 {
       display: flex;
       align-items: center;
+      height: 80px;
       margin-bottom: 30px;
       font-size: 60px;
-      height: 70px;
     }
 
     .line2 {
       display: flex;
       align-items: center;
+      height: 80px;
       font-size: 60px;
-      height: 70px;
     }
 
     #typing {
-      min-width: 280px;
+      min-width: 250px;
+    }
+
+    #typedText {
+      display: none;
     }
 
     .cursor {
@@ -69,23 +72,15 @@
 
     #answer {
       opacity: 0;
-      width: 1px;
-      height: 1px;
-      border: none;
-      outline: none;
       position: absolute;
-    }
-
-    #typedText {
-      display: none;
-      min-width: 180px;
+      pointer-events: none;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="box">
     <div class="line1">
       <div id="typing"></div>
       <div class="cursor" id="cursorTop"></div>
@@ -102,11 +97,12 @@
   <script>
     var text = "READY?";
     var i = 0;
+    var started = false;
 
     function type() {
       if (i < text.length) {
         document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
+        i = i + 1;
         setTimeout(type, 100);
       }
     }
@@ -114,10 +110,11 @@
     type();
 
     document.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
+      if (event.key === "Enter" && started === false) {
+        started = true;
         document.getElementById("cursorTop").style.display = "none";
-        document.getElementById("typedText").style.display = "inline-block";
-        document.getElementById("cursorBottom").style.display = "inline-block";
+        document.getElementById("typedText").style.display = "block";
+        document.getElementById("cursorBottom").style.display = "block";
         document.getElementById("answer").focus();
       }
     });
