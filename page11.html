@@ -36,29 +36,28 @@
     }
 
     .cursor {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 60px;
       background: #66F6BB;
       margin-left: 10px;
       animation: blink 1s infinite;
     }
 
     @keyframes blink {
-      0% {opacity: 1;}
-      50% {opacity: 0;}
-      100% {opacity: 1;}
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     input {
       background: black;
       border: none;
-      border-bottom: 2px solid #66F6BB;
       color: #66F6BB;
       font-family: 'DepartureMono', monospace;
-      font-size: 30px;
+      font-size: 60px;
       outline: none;
       text-align: center;
-      width: 200px;
+      width: 220px;
     }
   </style>
 </head>
@@ -66,14 +65,12 @@
 <body>
 
   <div class="container">
-
     <div class="line">
       <div class="text" id="typing"></div>
       <div class="cursor"></div>
     </div>
 
     <input id="answer" type="text">
-
   </div>
 
   <script>
