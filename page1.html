@@ -3,13 +3,16 @@
 <head>
   <title>Retro Loading</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
   <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('DepartureMono-Regular.otf') format('opentype');
+    }
+
     body {
       background: black;
       margin: 0;
-      font-family: 'Press Start 2P', monospace;
+      font-family: 'DepartureMono', monospace;
       color: #66F6BB;
     }
 
@@ -18,13 +21,22 @@
       margin: 200px auto;
     }
 
-    .top-text {
-      font-size: 24px;
+    .top-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 20px;
     }
 
+    .top-text {
+      font-size: 24px;
+    }
+
+    #percent {
+      font-size: 16px;
+    }
+
     .bar-box {
-      position: relative;
       width: 850px;
       margin: auto;
     }
@@ -50,24 +62,19 @@
         black 30px
       );
     }
-
-    #percent {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 16px;
-    }
   </style>
 </head>
+
 <body>
 
   <div class="loading-box">
-    <div class="top-text">Loading</div>
+    <div class="top-line">
+      <div class="top-text">Loading</div>
+      <div id="percent">0%</div>
+    </div>
 
     <div class="bar-box">
       <progress id="bar" value="0" max="100"></progress>
-      <span id="percent">0%</span>
     </div>
   </div>
 
