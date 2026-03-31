@@ -93,7 +93,11 @@
         num = num + 1;
         bar.value = num;
         percent.innerText = num + "%";
-        setTimeout(move, 50);
+        setTimeout(move, 30);
+      } else {
+        setTimeout(function() {
+          window.location.href = "page11.html";
+        }, 500);
       }
     }
 
