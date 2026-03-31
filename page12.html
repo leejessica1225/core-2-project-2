@@ -7,71 +7,62 @@
   <style>
     @font-face {
       font-family: 'DepartureMono';
-      src: url('DepartureMono-Regular.otf') format('opentype');
+      src: url('DepartureMono-Regular.otf');
     }
 
     body {
-      margin: 0;
-      background: black;
+      background: #2f34b5;
       color: #66F6BB;
-      font-family: 'DepartureMono', monospace;
+      font-family: 'DepartureMono';
       font-size: 22px;
-      padding: 40px;
+      padding: 30px;
     }
 
     #screen {
       white-space: pre-line;
       line-height: 1.5;
     }
+
+    .line {
+      margin-left: 30px;
+      margin-top: 10px;
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: #66F6BB;
+      font-family: 'DepartureMono';
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .arrow {
+      display: none;
+      margin-right: 10px;
+    }
   </style>
 </head>
 
 <body>
-  <div id="screen"></div>
 
-  <script>
-    const text = `MONITOR READY.
-> load fish.img
+<div id="screen"></div>
 
-IMAGE RECOVERED.
-MULTIPLE LIFE-FORMS DETECTED.
-STATUS: SWIMMING
+<div id="choices" style="display:none;">
+  <div class="line">
+    <span id="arrow1" class="arrow">▶</span>
+    <button onclick="clickYes()">YES</button>
+  </div>
 
-Small bodies moving together.
-Silver light flickers.
-Movement: slow and endless.
-
-They drift as one.
-Like they belong here.
-
-WILL YOU CONTINUE?
-YES
-NO`;
-
-    let i = 0;
-    const speed = 35;
-    const screen = document.getElementById("screen");
-
-    function typeText() {
-      if (i < text.length) {
-        screen.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeText, speed);
-      }
-    }
-
-    typeText();
-  </script>
-</body>
-</html>
-</head>
-
-<body>
-
-<div id="screen"></div><span id="cursor"></span>
+  <div class="line">
+    <span id="arrow2" class="arrow">▶</span>
+    <button onclick="clickNo()">NO</button>
+  </div>
+</div>
 
 <script>
-const text = `MONITOR READY.
+
+var text = `MONITOR READY.
 > load fish.img
 
 IMAGE RECOVERED.
@@ -85,23 +76,36 @@ Movement: slow and endless.
 They drift as one.
 Like they belong here.
 
-WILL YOU CONTINUE?
-YES
-NO`;
+WILL YOU CONTINUE?`;
 
-let i = 0;
-const speed = 35;
-const screen = document.getElementById("screen");
+var i = 0;
 
-function type() {
+function typing() {
   if (i < text.length) {
-    screen.innerHTML += text.charAt(i);
+    document.getElementById("screen").innerHTML += text[i];
     i++;
-    setTimeout(type, speed);
+    setTimeout(typing, 30);
+  } else {
+    document.getElementById("choices").style.display = "block";
   }
 }
 
-type();
+function clickYes() {
+  document.getElementById("arrow1").style.display = "inline";
+  document.getElementById("arrow2").style.display = "none";
+
+  setTimeout(function() {
+    window.location.href = "page13.html";
+  }, 500);
+}
+
+function clickNo() {
+  document.getElementById("arrow1").style.display = "none";
+  document.getElementById("arrow2").style.display = "inline";
+}
+
+typing();
+
 </script>
 
 </body>
