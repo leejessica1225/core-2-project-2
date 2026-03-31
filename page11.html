@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ready</title>
+  <title>Page 11</title>
 
   <style>
     @font-face {
@@ -20,19 +20,27 @@
       color: #66F6BB;
     }
 
-    .container {
+    .wrapper {
       text-align: center;
     }
 
-    .line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 30px;
+    .container {
+      display: inline-block;
+      text-align: left;
     }
 
-    .text {
+    .line1 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
       font-size: 60px;
+    }
+
+    .line2 {
+      display: flex;
+      align-items: center;
+      font-size: 60px;
+      min-height: 70px;
     }
 
     .cursor {
@@ -47,7 +55,7 @@
       width: 24px;
       height: 60px;
       background: #66F6BB;
-      margin-right: 10px;
+      margin-left: 10px;
       animation: blink 1s infinite;
       display: none;
     }
@@ -58,16 +66,16 @@
       100% { opacity: 1; }
     }
 
-    input {
-      background: black;
+    #answer {
+      opacity: 0;
+      width: 1px;
+      height: 1px;
       border: none;
-      color: #66F6BB;
-      font-family: 'DepartureMono', monospace;
-      font-size: 60px;
       outline: none;
-      text-align: left;
-      width: 220px;
-      caret-color: transparent;
+      position: absolute;
+    }
+
+    #typedText {
       display: none;
     }
   </style>
@@ -75,19 +83,23 @@
 
 <body>
 
-  <div class="container">
+  <div class="wrapper">
+    <div class="container">
 
-    <div class="line">
-      <div class="text" id="typing"></div>
-      <div class="cursor" id="cursorTop"></div>
+      <div class="line1">
+        <div id="typing"></div>
+        <div class="cursor" id="cursorTop"></div>
+      </div>
+
+      <div class="line2">
+        <div id="typedText"></div>
+        <div class="cursor2" id="cursorBottom"></div>
+      </div>
+
     </div>
-
-    <div class="line">
-      <div class="cursor2" id="cursorBottom"></div>
-      <input id="answer" type="text" autocomplete="off">
-    </div>
-
   </div>
+
+  <input id="answer" type="text" autocomplete="off">
 
   <script>
     var text = "READY?";
@@ -106,23 +118,24 @@
     document.addEventListener("keydown", function(event) {
       if (event.key === "Enter") {
         document.getElementById("cursorTop").style.display = "none";
+        document.getElementById("typedText").style.display = "inline-block";
         document.getElementById("cursorBottom").style.display = "inline-block";
-        document.getElementById("answer").style.display = "inline-block";
         document.getElementById("answer").focus();
-      }
-    });
-
-    document.getElementById("answer").addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        if (this.value.toUpperCase() === "YES") {
-          window.location.href = "page12.html";
-        }
       }
     });
 
     document.getElementById("answer").oninput = function() {
       this.value = this.value.toUpperCase();
+      document.getElementById("typedText").innerHTML = this.value;
     };
+
+    document.getElementById("answer").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        if (this.value === "YES") {
+          window.location.href = "page12.html";
+        }
+      }
+    });
   </script>
 
 </body>
