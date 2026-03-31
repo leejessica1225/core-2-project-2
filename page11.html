@@ -22,6 +22,7 @@
 
     .box {
       width: 320px;
+      transform: translateX(5px);
     }
 
     .line1 {
@@ -29,7 +30,6 @@
       font-size: 60px;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       margin-bottom: 30px;
     }
 
@@ -38,7 +38,6 @@
       font-size: 60px;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
     }
 
     #typing {
@@ -49,25 +48,27 @@
       display: none;
     }
 
-    .cursor2 {
+    .cursor {
       width: 24px;
       height: 60px;
       background: #66F6BB;
-      margin-left: 0;
+      margin-left: 10px;
       animation: blink 1s infinite;
-      display: none;
     }
 
     @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
+      0% {opacity: 1;}
+      50% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+
+    #cursorBottom {
+      display: none;
     }
 
     #answer {
       opacity: 0;
       position: absolute;
-      pointer-events: none;
     }
   </style>
 </head>
@@ -75,14 +76,17 @@
 <body>
 
   <div class="box">
+
     <div class="line1">
       <div id="typing"></div>
+      <div class="cursor" id="cursorTop"></div>
     </div>
 
     <div class="line2">
       <div id="typedText"></div>
-      <div class="cursor2" id="cursorBottom"></div>
+      <div class="cursor" id="cursorBottom"></div>
     </div>
+
   </div>
 
   <input id="answer" type="text" autocomplete="off">
@@ -94,11 +98,9 @@
 
     function type() {
       if (i < text.length) {
-        document.getElementById("typing").innerHTML = text.substring(0, i + 1) + "■";
+        document.getElementById("typing").innerHTML += text.charAt(i);
         i = i + 1;
         setTimeout(type, 100);
-      } else {
-        document.getElementById("typing").innerHTML = text + "■";
       }
     }
 
@@ -107,9 +109,11 @@
     document.addEventListener("keydown", function(event) {
       if (event.key === "Enter" && started === false) {
         started = true;
-        document.getElementById("typing").innerHTML = text;
+
+        document.getElementById("cursorTop").style.display = "none";
         document.getElementById("typedText").style.display = "block";
         document.getElementById("cursorBottom").style.display = "block";
+
         document.getElementById("answer").focus();
       }
     });
