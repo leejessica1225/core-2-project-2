@@ -10,13 +10,14 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .progress-bar {
+    .bar {
       width: 400px;
       height: 18px;
       background-color: #e5e5ea;
@@ -24,8 +25,8 @@
       overflow: hidden;
     }
 
-    .progress-fill {
-      width: 60%;
+    .fill {
+      width: 0%;
       height: 100%;
       background-color: #007aff;
       border-radius: 999px;
@@ -34,8 +35,28 @@
 </head>
 
 <body>
-  <div class="progress-bar">
-    <div class="progress-fill"></div>
+
+  <div class="bar">
+    <div class="fill" id="fill"></div>
   </div>
+
+  <script>
+    var width = 0;
+    var bar = document.getElementById("fill");
+
+    var interval = setInterval(function() {
+      width = width + 1;
+      bar.style.width = width + "%";
+
+      if (width >= 100) {
+        clearInterval(interval);
+
+        setTimeout(function() {
+          window.location.href = "page41.html";
+        }, 500);
+      }
+    }, 30);
+  </script>
+
 </body>
 </html>
