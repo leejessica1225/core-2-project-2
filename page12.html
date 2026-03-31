@@ -11,7 +11,7 @@
     }
 
     body {
-      background: #2f34b5;
+      background: black;
       color: #66F6BB;
       font-family: 'DepartureMono';
       font-size: 22px;
@@ -37,9 +37,11 @@
       cursor: pointer;
     }
 
+    /* 🔥 자리 미리 차지 */
     .arrow {
-      display: none;
-      margin-right: 10px;
+      display: inline-block;
+      width: 20px;
+      visibility: hidden;
     }
   </style>
 </head>
@@ -91,8 +93,8 @@ function typing() {
 }
 
 function clickYes() {
-  document.getElementById("arrow1").style.display = "inline";
-  document.getElementById("arrow2").style.display = "none";
+  document.getElementById("arrow1").style.visibility = "visible";
+  document.getElementById("arrow2").style.visibility = "hidden";
 
   setTimeout(function() {
     window.location.href = "page13.html";
@@ -100,8 +102,8 @@ function clickYes() {
 }
 
 function clickNo() {
-  document.getElementById("arrow1").style.display = "none";
-  document.getElementById("arrow2").style.display = "inline";
+  document.getElementById("arrow1").style.visibility = "hidden";
+  document.getElementById("arrow2").style.visibility = "visible";
 }
 
 typing();
