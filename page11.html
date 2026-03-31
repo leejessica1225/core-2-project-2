@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page 11</title>
+  <title>ready</title>
 
   <style>
     @font-face {
@@ -28,7 +28,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .text {
@@ -41,6 +41,15 @@
       background: #66F6BB;
       margin-left: 10px;
       animation: blink 1s infinite;
+    }
+
+    .cursor2 {
+      width: 24px;
+      height: 60px;
+      background: #66F6BB;
+      margin-right: 10px;
+      animation: blink 1s infinite;
+      display: none;
     }
 
     @keyframes blink {
@@ -56,8 +65,10 @@
       font-family: 'DepartureMono', monospace;
       font-size: 60px;
       outline: none;
-      text-align: center;
+      text-align: left;
       width: 220px;
+      caret-color: transparent;
+      display: none;
     }
   </style>
 </head>
@@ -65,38 +76,53 @@
 <body>
 
   <div class="container">
+
     <div class="line">
       <div class="text" id="typing"></div>
-      <div class="cursor"></div>
+      <div class="cursor" id="cursorTop"></div>
     </div>
 
-    <input id="answer" type="text">
+    <div class="line">
+      <div class="cursor2" id="cursorBottom"></div>
+      <input id="answer" type="text" autocomplete="off">
+    </div>
+
   </div>
 
   <script>
     var text = "READY?";
     var i = 0;
-    var speed = 100;
 
     function type() {
       if (i < text.length) {
         document.getElementById("typing").innerHTML += text.charAt(i);
         i++;
-        setTimeout(type, speed);
+        setTimeout(type, 100);
       }
     }
 
     type();
 
-    var input = document.getElementById("answer");
-
-    input.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function(event) {
       if (event.key === "Enter") {
-        if (input.value.toUpperCase() === "YES") {
+        document.getElementById("cursorTop").style.display = "none";
+        document.getElementById("cursorBottom").style.display = "inline-block";
+        document.getElementById("answer").style.display = "inline-block";
+        document.getElementById("answer").focus();
+      }
+    });
+
+    document.getElementById("answer").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        if (this.value.toUpperCase() === "YES") {
           window.location.href = "page12.html";
         }
       }
     });
+
+    document.getElementById("answer").oninput = function() {
+      this.value = this.value.toUpperCase();
+    };
   </script>
 
 </body>
