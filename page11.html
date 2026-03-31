@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page 11</title>
+
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('DepartureMono-Regular.otf') format('opentype');
+    }
+
+    body {
+      background: black;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'DepartureMono', monospace;
+      color: #66F6BB;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .text {
+      font-size: 60px;
+    }
+
+    .cursor {
+      width: 20px;
+      height: 20px;
+      background: #66F6BB;
+      margin-left: 10px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% {opacity: 1;}
+      50% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+
+    input {
+      background: black;
+      border: none;
+      border-bottom: 2px solid #66F6BB;
+      color: #66F6BB;
+      font-family: 'DepartureMono', monospace;
+      font-size: 30px;
+      outline: none;
+      text-align: center;
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="line">
+      <div class="text" id="typing"></div>
+      <div class="cursor"></div>
+    </div>
+
+    <input id="answer" type="text">
+
+  </div>
+
+  <script>
+    var text = "READY?";
+    var i = 0;
+    var speed = 100;
+
+    function type() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+
+    type();
+
+    var input = document.getElementById("answer");
+
+    input.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        if (input.value.toUpperCase() === "YES") {
+          window.location.href = "page12.html";
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
