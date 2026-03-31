@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page 12</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: #66F6BB;
+      font-family: monospace;
+      font-size: 22px;
+      padding: 40px;
+    }
+
+    #screen {
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+
+    #cursor {
+      display: inline-block;
+      width: 10px;
+      background: #66F6BB;
+      margin-left: 5px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="screen"></div><span id="cursor"></span>
+
+<script>
+const text = `MONITOR READY.
+> load fish.img
+
+IMAGE RECOVERED.
+MULTIPLE LIFE-FORMS DETECTED.
+STATUS: SWIMMING
+
+Small bodies moving together.
+Silver light flickers.
+Movement: slow and endless.
+
+They drift as one.
+Like they belong here.
+
+WILL YOU CONTINUE?
+YES
+NO`;
+
+let i = 0;
+const speed = 35;
+const screen = document.getElementById("screen");
+
+function type() {
+  if (i < text.length) {
+    screen.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, speed);
+  }
+}
+
+type();
+</script>
+
+</body>
+</html>
