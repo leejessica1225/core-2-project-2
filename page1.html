@@ -14,26 +14,29 @@
       margin: 0;
       font-family: 'DepartureMono', monospace;
       color: #66F6BB;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .loading-box {
       width: 850px;
-      margin: 200px auto;
     }
 
     .top-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .top-text {
-      font-size: 24px;
+      font-size: 40px;
     }
 
     #percent {
-      font-size: 16px;
+      font-size: 28px;
     }
 
     .bar-box {
@@ -79,10 +82,10 @@
   </div>
 
   <script>
-    let bar = document.getElementById("bar");
-    let percent = document.getElementById("percent");
+    var bar = document.getElementById("bar");
+    var percent = document.getElementById("percent");
 
-    let num = 0;
+    var num = 0;
 
     function move() {
       if (num < 100) {
