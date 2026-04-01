@@ -16,14 +16,18 @@
       background-position: center;
       background-repeat: no-repeat;
       height: 100vh;
-      font-family: 'Romantic', Arial;
+      font-family: 'Romantic', Arial, sans-serif;
+      position: relative;
+      overflow: hidden;
     }
 
     .box {
-      width: 700px;
-      padding: 25px;
-      background: rgba(255, 255, 255, 0.5);
-      border: 2px solid white;
+      width: 820px;
+      height: 300px;
+      padding: 30px;
+      box-sizing: border-box;
+      background: rgba(80, 90, 120, 0.45);
+      border: 2px solid rgba(255, 255, 255, 0.9);
       border-radius: 40px;
 
       position: absolute;
@@ -34,26 +38,29 @@
 
     #text {
       white-space: pre-line;
-      font-size: 26px;
-      line-height: 1.6;
-      color: #333;
-      height: 140px;
+      font-size: 28px;
+      line-height: 1.8;
+      color: white;
+      height: 170px;
+      margin: 0;
     }
 
     .input-box {
       width: 100%;
+      height: 50px;
       margin-top: 10px;
-      padding: 10px;
-      font-size: 20px;
+      padding: 0 14px;
+      box-sizing: border-box;
       border: none;
-      background: rgba(255, 255, 255, 0.6);
-      color: #333;
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+      font-size: 24px;
+      font-family: 'Romantic', Arial, sans-serif;
       outline: none;
-      font-family: 'Romantic';
     }
 
     .input-box::placeholder {
-      color: #555;
+      color: white;
       opacity: 1;
     }
   </style>
@@ -63,10 +70,10 @@
 
   <div class="box">
     <div id="text"></div>
-    <input 
-      type="text" 
-      id="input" 
-      class="input-box" 
+    <input
+      type="text"
+      id="input"
+      class="input-box"
       placeholder="type what you want to find"
       autocomplete="off"
       autocorrect="off"
@@ -78,18 +85,20 @@
   <script>
     var message = "there is something in the distance.\n\nnot lost.\nnot found.\n\njust... waiting.";
     var i = 0;
+    var text = document.getElementById("text");
+    var input = document.getElementById("input");
 
     function typeText() {
       if (i < message.length) {
-        document.getElementById("text").innerHTML += message.charAt(i);
-        i++;
+        text.innerHTML = text.innerHTML + message.charAt(i);
+        i = i + 1;
         setTimeout(typeText, 60);
       }
     }
 
     typeText();
 
-    document.getElementById("input").addEventListener("keydown", function(event) {
+    input.addEventListener("keydown", function(event) {
       if (event.key == "Enter") {
         setTimeout(function() {
           window.location.href = "page44.html";
