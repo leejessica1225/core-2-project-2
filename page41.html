@@ -4,6 +4,11 @@
   <title>Page 41</title>
 
   <style>
+    @font-face {
+      font-family: 'Romantic';
+      src: url('ROMANTIC.TTF');
+    }
+
     body {
       margin: 0;
       background-image: url("59067254a59f3ff15c59d062832650a2 (1).jpg");
@@ -15,7 +20,7 @@
       justify-content: center;
       align-items: center;
       color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Romantic', Arial, sans-serif;
     }
 
     .box {
@@ -50,6 +55,7 @@
       outline: none;
       box-shadow: none;
       border-radius: 0;
+      font-family: 'Romantic', Arial, sans-serif;
     }
 
     .input-box:focus {
@@ -89,8 +95,8 @@
 
     function typeText() {
       if (i < message.length) {
-        text.innerHTML = text.innerHTML + message.charAt(i);
-        i = i + 1;
+        text.innerHTML += message.charAt(i);
+        i++;
         setTimeout(typeText, 60);
       }
     }
