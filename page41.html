@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page 41</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-image: url("59067254a59f3ff15c59d062832650a2 (1).jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .box {
+      width: 600px;
+      padding: 30px;
+      border: 2px solid white;
+      box-sizing: border-box;
+      background: rgba(0,0,0,0.4);
+    }
+
+    #text {
+      white-space: pre-line;
+      font-size: 28px;
+      line-height: 1.6;
+      min-height: 260px;
+    }
+
+    .input-box {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      font-size: 22px;
+      box-sizing: border-box;
+      border: 2px solid white;
+      background: transparent;
+      color: white;
+      outline: none;
+    }
+
+    .input-box::placeholder {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div id="text"></div>
+    <input type="text" class="input-box" placeholder="type what you want to find">
+  </div>
+
+  <script>
+    var message = "there is something in the distance.\n\nnot lost.\nnot found.\n\njust... waiting.";
+    var i = 0;
+    var text = document.getElementById("text");
+
+    function typeText() {
+      if (i < message.length) {
+        text.innerHTML = text.innerHTML + message.charAt(i);
+        i = i + 1;
+        setTimeout(typeText, 60);
+      }
+    }
+
+    typeText();
+  </script>
+</body>
+</html>
