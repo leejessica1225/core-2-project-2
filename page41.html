@@ -14,15 +14,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
       color: white;
+      font-family: Arial;
     }
 
     .box {
       width: 600px;
       padding: 30px;
       border: 2px solid white;
-      box-sizing: border-box;
       background: rgba(0,0,0,0.4);
     }
 
@@ -34,43 +33,46 @@
     }
 
     .input-box {
-      margin-top: 20px;
       width: 100%;
-      padding: 14px;
+      margin-top: 20px;
+      padding: 12px;
       font-size: 22px;
-      box-sizing: border-box;
       border: 2px solid white;
       background: transparent;
-      color: white;
-      outline: none;
-    }
-
-    .input-box::placeholder {
       color: white;
     }
   </style>
 </head>
 
 <body>
+
   <div class="box">
     <div id="text"></div>
-    <input type="text" class="input-box" placeholder="type what you want to find">
+    <input id="input" class="input-box" placeholder="type what you want to find">
   </div>
 
   <script>
     var message = "there is something in the distance.\n\nnot lost.\nnot found.\n\njust... waiting.";
     var i = 0;
-    var text = document.getElementById("text");
 
     function typeText() {
       if (i < message.length) {
-        text.innerHTML = text.innerHTML + message.charAt(i);
-        i = i + 1;
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
         setTimeout(typeText, 60);
       }
     }
 
     typeText();
+
+    document.getElementById("input").addEventListener("keydown", function(event) {
+      if (event.key == "Enter") {
+        setTimeout(function() {
+          window.location.href = "page44.html";
+        }, 500);
+      }
+    });
   </script>
+
 </body>
 </html>
