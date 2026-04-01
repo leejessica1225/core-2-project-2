@@ -15,31 +15,51 @@
       justify-content: center;
       align-items: center;
       color: white;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
     }
 
     .box {
       width: 600px;
+      height: 430px;
       padding: 30px;
       border: 2px solid white;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.35);
+      box-sizing: border-box;
     }
 
     #text {
       white-space: pre-line;
       font-size: 28px;
-      line-height: 1.6;
-      min-height: 260px;
+      line-height: 1.7;
+      height: 280px;
+      overflow: hidden;
     }
 
     .input-box {
+      display: block;
       width: 100%;
+      height: 58px;
       margin-top: 20px;
-      padding: 12px;
+      padding: 0 16px;
       font-size: 22px;
       border: 2px solid white;
       background: transparent;
       color: white;
+      box-sizing: border-box;
+      outline: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .input-box:focus {
+      outline: none;
+      box-shadow: none;
+      border: 2px solid white;
+    }
+
+    .input-box::placeholder {
+      color: #ffffff;
+      opacity: 1;
     }
   </style>
 </head>
@@ -48,24 +68,26 @@
 
   <div class="box">
     <div id="text"></div>
-    <input id="input" class="input-box" placeholder="type what you want to find">
+    <input type="text" id="input" class="input-box" placeholder="type what you want to find">
   </div>
 
   <script>
     var message = "there is something in the distance.\n\nnot lost.\nnot found.\n\njust... waiting.";
     var i = 0;
+    var text = document.getElementById("text");
+    var input = document.getElementById("input");
 
     function typeText() {
       if (i < message.length) {
-        document.getElementById("text").innerHTML += message.charAt(i);
-        i++;
+        text.innerHTML = text.innerHTML + message.charAt(i);
+        i = i + 1;
         setTimeout(typeText, 60);
       }
     }
 
     typeText();
 
-    document.getElementById("input").addEventListener("keydown", function(event) {
+    input.addEventListener("keydown", function(event) {
       if (event.key == "Enter") {
         setTimeout(function() {
           window.location.href = "page44.html";
