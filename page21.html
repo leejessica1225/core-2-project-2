@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>scribble</title>
+  <title>Search Page</title>
 
   <style>
+    @font-face {
+      font-family: 'cactus';
+      src: url('Cactus-Jack.ttf');
+    }
+
     body {
       background-color: #fdfcf7;
       height: 100vh;
       margin: 0;
-      font-size: 30px;
+      font-size: 32px;
       position: relative;
+      font-family: 'cactus';
     }
 
     .box {
@@ -30,19 +36,21 @@
     input {
       border: none;
       outline: none;
-      font-size: 30px;
+      font-size: 32px;
       width: 70%;
       background: transparent;
+      font-family: 'cactus';
     }
 
     button {
       font-size: 20px;
       cursor: pointer;
+      font-family: 'cactus';
     }
 
     .random-img {
       position: absolute;
-      width: 80px;
+      width: 140px;
     }
   </style>
 </head>
@@ -82,13 +90,13 @@
       let x, y;
 
       do {
-        x = Math.random() * (screenWidth - 80);
-        y = Math.random() * (screenHeight - 80);
+        x = Math.random() * (screenWidth - 140);
+        y = Math.random() * (screenHeight - 140);
       } while (
         x < rect.right &&
-        x + 80 > rect.left &&
+        x + 140 > rect.left &&
         y < rect.bottom &&
-        y + 80 > rect.top
+        y + 140 > rect.top
       );
 
       img.style.left = x + "px";
