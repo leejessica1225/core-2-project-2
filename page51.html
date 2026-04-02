@@ -69,6 +69,18 @@
       font-size: 22px;
       font-family: 'arialNarrow';
     }
+
+    .clear {
+      position: fixed;
+      top: 40px;
+      left: 120px;
+      color: white;
+      font-size: 22px;
+      font-family: 'arialNarrow';
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
   </style>
 </head>
 
@@ -83,6 +95,7 @@
   </div>
 
   <a href="index.html" class="home">home</a>
+  <button class="clear" onclick="clearImages()">clear</button>
 
   <script>
     var input = document.getElementById("typeBox");
@@ -139,6 +152,14 @@
       }
 
     });
+
+    function clearImages() {
+      var all = document.querySelectorAll(".floating");
+
+      for (var i = 0; i < all.length; i++) {
+        all[i].remove();
+      }
+    }
   </script>
 
 </body>
