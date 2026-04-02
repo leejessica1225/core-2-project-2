@@ -12,6 +12,14 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .all {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
     }
 
     .wrapper {
@@ -33,13 +41,12 @@
       position: relative;
     }
 
-    /* 좌우 흐림 효과 */
     .container::before,
     .container::after {
       content: "";
       position: absolute;
       top: 0;
-      width: 100px;
+      width: 40px;
       height: 100%;
       z-index: 2;
       pointer-events: none;
@@ -65,49 +72,106 @@
       height: 284px;
       object-fit: cover;
       flex-shrink: 0;
+      display: block;
       transition: transform 0.3s;
     }
 
-    /* hover 확대 */
     img:hover {
-      transform: scale(1.15);
+      transform: scale(1.12);
       z-index: 1;
+    }
+
+    input {
+      width: 260px;
+      height: 40px;
+      border: 1px solid black;
+      background: transparent;
+      text-align: center;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #999999;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="wrapper">
+  <div class="all">
 
-    <button onclick="left()">&lt;</button>
+    <div class="wrapper">
+      <button onclick="left()">&lt;</button>
 
-    <div class="container">
-      <div class="gallery" id="gallery">
-
-        <img src="img1Small.jpeg">
-        <img src="img2Small.jpeg">
-        <img src="img3Small.jpeg">
-        <img src="img4Small.jpeg">
-        <img src="img5Small.jpeg">
-        <img src="img6Small.jpeg">
-        <img src="img7Small.jpeg">
-        <img src="img8Small.jpeg">
-        <img src="img9Small.jpeg">
-        <img src="img10Small.jpeg">
-        <img src="img11Small.jpeg">
-        <img src="img12Small.jpeg">
-
+      <div class="container">
+        <div class="gallery" id="gallery">
+          <img src="img1Small.jpeg">
+          <img src="img2Small.jpeg">
+          <img src="img3Small.jpeg">
+          <img src="img4Small.jpeg">
+          <img src="img5Small.jpeg">
+          <img src="img6Small.jpeg">
+          <img src="img7Small.jpeg">
+          <img src="img8Small.jpeg">
+          <img src="img9Small.jpeg">
+          <img src="img10Small.jpeg">
+          <img src="img11Small.jpeg">
+          <img src="img12Small.jpeg">
+        </div>
       </div>
+
+      <button onclick="right()">&gt;</button>
     </div>
 
-    <button onclick="right()">&gt;</button>
+    <input id="textBox" type="text" placeholder="black and white / color">
 
   </div>
 
   <script>
     var gallery = document.getElementById("gallery");
+    var textBox = document.getElementById("textBox");
     var size = 180;
+
+    var blackWhiteImages = [
+      "img1Small.jpeg",
+      "img2Small.jpeg",
+      "img3Small.jpeg",
+      "img4Small.jpeg",
+      "img5Small.jpeg",
+      "img6Small.jpeg",
+      "img7Small.jpeg",
+      "img8Small.jpeg",
+      "img9Small.jpeg",
+      "img10Small.jpeg",
+      "img11Small.jpeg",
+      "img12Small.jpeg"
+    ];
+
+    var colorImages = [
+      "img1.jpeg",
+      "img2.jpeg",
+      "img3.jpeg",
+      "img4.jpeg",
+      "img5.jpeg",
+      "img6.jpeg",
+      "img7.jpeg",
+      "img8.jpeg",
+      "img9.jpeg",
+      "img10.jpeg",
+      "img11.jpeg",
+      "img12.jpeg"
+    ];
+
+    function makeGallery(imageArray) {
+      gallery.innerHTML = "";
+
+      for (var i = 0; i < imageArray.length; i = i + 1) {
+        var newImage = document.createElement("img");
+        newImage.src = imageArray[i];
+        gallery.appendChild(newImage);
+      }
+    }
 
     function right() {
       gallery.style.transition = "transform 0.3s";
@@ -130,6 +194,22 @@
         gallery.style.transform = "translateX(0)";
       }, 10);
     }
+
+    textBox.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        var value = textBox.value.toLowerCase();
+
+        if (value === "black and white") {
+          makeGallery(blackWhiteImages);
+        }
+
+        if (value === "color") {
+          makeGallery(colorImages);
+        }
+
+        textBox.value = "";
+      }
+    });
   </script>
 
 </body>
