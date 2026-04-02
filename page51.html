@@ -4,118 +4,129 @@
   <title>page31</title>
 
   <style>
+    @font-face {
+      font-family: 'arialNarrow';
+      src: url('Arial Narrow Regular.ttf');
+    }
+
     body {
       margin: 0;
-      background: #F6F7F1;
+      background: #0900CF;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-family: 'arialNarrow', Arial, sans-serif;
+      color: white;
+      position: relative;
       overflow: hidden;
     }
 
-    .wrapper {
-      display: flex;
-      align-items: center;
-      gap: 50px;
+    .bottom-area {
+      position: absolute;
+      left: 50%;
+      bottom: 160px;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 100%;
     }
 
-    button {
-      background: none;
-      border: none;
-      font-size: 40px;
-      cursor: pointer;
+    .type-box {
+      width: 520px;
+      height: 65px;
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      padding: 12px;
+      font-size: 22px;
+      box-sizing: border-box;
+      outline: none;
+      text-align: center;
     }
 
-    .container {
-      width: 900px;
-      overflow: hidden;
+    .choices {
+      position: relative;
+      top: 40px;
+      font-size: 22px;
+      word-spacing: 40px;
     }
 
-    .gallery {
-      display: flex;
-      gap: 20px;
-      transition: transform 0.3s;
+    .floating {
+      position: absolute;
+      animation: float 4s ease-in-out infinite;
+      pointer-events: none;
     }
 
-    img {
-      width: 160px;
-      height: 284px;
-      object-fit: cover;
-      flex-shrink: 0;
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0px); }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="wrapper">
+  <div class="bottom-area">
+    <input type="text" class="type-box" id="typeBox">
 
-    <button onclick="left()">&lt;</button>
-
-    <div class="container">
-      <div class="gallery" id="gallery">
-
-        <img src="img1.jpg">
-        <img src="img2.jpg">
-        <img src="img3.jpg">
-        <img src="img4.jpg">
-        <img src="img5.jpg">
-        <img src="img6.jpg">
-        <img src="img7.jpg">
-        <img src="img8.jpg">
-        <img src="img9.jpg">
-        <img src="img10.jpg">
-        <img src="img11.jpg">
-        <img src="img12.jpg">
-
-        <img src="img1.jpg">
-        <img src="img2.jpg">
-        <img src="img3.jpg">
-        <img src="img4.jpg">
-        <img src="img5.jpg">
-        <img src="img6.jpg">
-        <img src="img7.jpg">
-        <img src="img8.jpg">
-        <img src="img9.jpg">
-        <img src="img10.jpg">
-        <img src="img11.jpg">
-        <img src="img12.jpg">
-
-      </div>
+    <div class="choices">
+      apple cat figure glasses
     </div>
-
-    <button onclick="right()">&gt;</button>
-
   </div>
 
   <script>
-    var gallery = document.getElementById("gallery");
-    var index = 0;
-    var size = 180;
-    var offset = 90;
+    var input = document.getElementById("typeBox");
 
-    function update() {
-      gallery.style.transform = "translateX(" + (-index * size - offset) + "px)";
-    }
+    input.addEventListener("input", function() {
+      input.value = input.value.toLowerCase();
+    });
 
-    function right() {
-      index = index + 1;
-      if (index == 12) {
-        index = 0;
+    input.addEventListener("keydown", function(event) {
+
+      if (event.key == "Enter") {
+
+        var images = [];
+
+        if (input.value == "apple") {
+          images = [
+            "apple1.png","apple2.png","apple3.png","apple4.png",
+            "apple5.png","apple6.png","apple7.png"
+          ];
+        }
+
+        if (input.value == "cat") {
+          images = [
+            "cat1.png","cat2.png","cat3.png","cat4.png","cat5.png"
+          ];
+        }
+
+        if (input.value == "human") {
+          images = [
+            "human1.png","human2.png","human3.png","human4.png","human5.png"
+          ];
+        }
+
+        if (input.value == "glasses") {
+          images = [
+            "glasses1.png","glasses2.png","glasses3.png","glasses4.png",
+            "glasses5.png","glasses6.png","glasses7.png","glasses8.png"
+          ];
+        }
+
+        for (var i = 0; i < images.length; i++) {
+
+          var img = document.createElement("img");
+          img.src = images[i];
+          img.className = "floating";
+
+          img.style.left = Math.random() * 90 + "%";
+          img.style.top = Math.random() * 70 + "%";
+          img.style.width = 140 + Math.random() * 120 + "px";
+
+          document.body.appendChild(img);
+        }
+
       }
-      update();
-    }
 
-    function left() {
-      index = index - 1;
-      if (index < 0) {
-        index = 11;
-      }
-      update();
-    }
-
-    update();
+    });
   </script>
 
 </body>
