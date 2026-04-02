@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page 2</title>
+
+  <style>
+    @font-face {
+      font-family: 'cactus';
+      src: url('Cactus-Jack.ttf');
+    }
+
+    body {
+      background-color: #f8f6ef;
+      color: black;
+      margin: 0;
+      height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family: 'cactus';
+    }
+
+    .row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .scribble {
+      width: 40px;
+      height: 40px;
+      border: 2px solid black;
+      border-radius: 50%;
+      display: none;
+    }
+
+    /* 살짝 삐뚤한 느낌 */
+    .scribble:nth-child(1) { transform: rotate(-10deg); }
+    .scribble:nth-child(2) { transform: rotate(6deg); }
+    .scribble:nth-child(3) { transform: rotate(-5deg); }
+    .scribble:nth-child(4) { transform: rotate(8deg); }
+    .scribble:nth-child(5) { transform: rotate(-3deg); }
+  </style>
+</head>
+
+<body>
+
+  <div class="row">
+    <div class="scribble"></div>
+    <div class="scribble"></div>
+    <div class="scribble"></div>
+    <div class="scribble"></div>
+    <div class="scribble"></div>
+  </div>
+
+  <script>
+    var items = document.getElementsByClassName("scribble");
+    var i = 0;
+
+    function showNext() {
+      items[i].style.display = "block";
+      i = i + 1;
+
+      if (i < items.length) {
+        setTimeout(showNext, 400);
+      } else {
+        setTimeout(function() {
+          window.location.href = "page21.html"; 
+        }, 500);
+      }
+    }
+
+    showNext();
+  </script>
+
+</body>
+</html>
