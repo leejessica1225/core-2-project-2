@@ -17,31 +17,30 @@
     .wrapper {
       display: flex;
       align-items: center;
-      gap: 50px;
+      gap: 40px;
     }
 
     button {
       background: none;
       border: none;
-      font-size: 42px;
+      font-size: 40px;
       cursor: pointer;
-      color: black;
     }
 
     .container {
-      width: 860px;
+      width: 900px;
       overflow: hidden;
     }
 
     .gallery {
       display: flex;
-      gap: 22px;
-      transition: transform 0.3s ease;
+      gap: 20px;
+      transition: transform 0.3s;
     }
 
     img {
-      width: 170px;
-      height: 302px;
+      width: 160px;
+      height: 284px;
       object-fit: cover;
       flex-shrink: 0;
       display: block;
@@ -50,73 +49,75 @@
 </head>
 
 <body>
+
   <div class="wrapper">
-    <button onclick="moveLeft()">&lt;</button>
+
+    <button onclick="left()">&lt;</button>
 
     <div class="container">
       <div class="gallery" id="gallery">
-        <img src="1.jpg">
-        <img src="2.jpg">
-        <img src="3.jpg">
-        <img src="4.jpg">
-        <img src="5.jpg">
-        <img src="6.jpg">
-        <img src="7.jpg">
-        <img src="8.jpg">
-        <img src="9.jpg">
-        <img src="10.jpg">
-        <img src="11.jpg">
-        <img src="12.jpg">
 
-        <img src="1.jpg">
-        <img src="2.jpg">
-        <img src="3.jpg">
-        <img src="4.jpg">
-        <img src="5.jpg">
-        <img src="6.jpg">
-        <img src="7.jpg">
-        <img src="8.jpg">
-        <img src="9.jpg">
-        <img src="10.jpg">
-        <img src="11.jpg">
-        <img src="12.jpg">
+        <img src="img1Small.jpeg">
+        <img src="img2Small.jpeg">
+        <img src="img3Small.jpeg">
+        <img src="img4Small.jpeg">
+        <img src="img5Small.jpeg">
+        <img src="img6Small.jpeg">
+        <img src="img7Small.jpeg">
+        <img src="img8Small.jpeg">
+        <img src="img9Small.jpeg">
+        <img src="img10Small.jpeg">
+        <img src="img11Small.jpeg">
+        <img src="img12Small.jpeg">
+
+        <img src="img1Small.jpeg">
+        <img src="img2Small.jpeg">
+        <img src="img3Small.jpeg">
+        <img src="img4Small.jpeg">
+        <img src="img5Small.jpeg">
+        <img src="img6Small.jpeg">
+        <img src="img7Small.jpeg">
+        <img src="img8Small.jpeg">
+        <img src="img9Small.jpeg">
+        <img src="img10Small.jpeg">
+        <img src="img11Small.jpeg">
+        <img src="img12Small.jpeg">
+
       </div>
     </div>
 
-    <button onclick="moveRight()">&gt;</button>
+    <button onclick="right()">&gt;</button>
+
   </div>
 
   <script>
     var gallery = document.getElementById("gallery");
     var index = 0;
-    var moveSize = 192;
-    var startOffset = 96;
+    var size = 180;
+    var offset = 90;
 
-    function updateGallery() {
-      gallery.style.transform = "translateX(" + (-index * moveSize - startOffset) + "px)";
+    function update() {
+      gallery.style.transform = "translateX(" + (-index * size - offset) + "px)";
     }
 
-    function moveRight() {
+    function right() {
       index = index + 1;
-
       if (index == 12) {
         index = 0;
       }
-
-      updateGallery();
+      update();
     }
 
-    function moveLeft() {
+    function left() {
       index = index - 1;
-
       if (index < 0) {
         index = 11;
       }
-
-      updateGallery();
+      update();
     }
 
-    updateGallery();
+    update();
   </script>
+
 </body>
 </html>
