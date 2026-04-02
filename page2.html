@@ -11,7 +11,6 @@
 
     body {
       background-color: #f8f6ef;
-      color: black;
       margin: 0;
       height: 100vh;
 
@@ -24,54 +23,55 @@
 
     .row {
       display: flex;
-      gap: 15px;
+      gap: 10px;
     }
 
-    .scribble {
-      width: 40px;
-      height: 40px;
-      border: 2px solid black;
-      border-radius: 50%;
+    .img {
+      width: 60px;
       display: none;
     }
 
-    /* 살짝 삐뚤한 느낌 */
-    .scribble:nth-child(1) { transform: rotate(-10deg); }
-    .scribble:nth-child(2) { transform: rotate(6deg); }
-    .scribble:nth-child(3) { transform: rotate(-5deg); }
-    .scribble:nth-child(4) { transform: rotate(8deg); }
-    .scribble:nth-child(5) { transform: rotate(-3deg); }
+    
+    progress {
+      display: none;
+    }
   </style>
 </head>
 
 <body>
 
+  
+  <progress id="bar" value="0" max="6"></progress>
+
+  
   <div class="row">
-    <div class="scribble"></div>
-    <div class="scribble"></div>
-    <div class="scribble"></div>
-    <div class="scribble"></div>
-    <div class="scribble"></div>
+    <img src="Group 54.png" class="img">
+    <img src="Group 54.png" class="img">
+    <img src="Group 55.png" class="img">
+    <img src="Group 56.png" class="img">
+    <img src="Group 57.png" class="img">
+    <img src="Group 58.png" class="img">
   </div>
 
   <script>
-    var items = document.getElementsByClassName("scribble");
-    var i = 0;
+    var bar = document.getElementById("bar");
+    var imgs = document.getElementsByClassName("img");
 
-    function showNext() {
-      items[i].style.display = "block";
-      i = i + 1;
+    function update() {
+      bar.value = bar.value + 1;
 
-      if (i < items.length) {
-        setTimeout(showNext, 400);
+      imgs[bar.value - 1].style.display = "block";
+
+      if (bar.value < bar.max) {
+        setTimeout(update, 300);
       } else {
         setTimeout(function() {
-          window.location.href = "page21.html"; 
+          window.location.href = "page21.html";
         }, 500);
       }
     }
 
-    showNext();
+    update();
   </script>
 
 </body>
