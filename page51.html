@@ -23,25 +23,24 @@
     button {
       background: none;
       border: none;
-      font-size: 42px;
+      font-size: 40px;
       cursor: pointer;
-      color: black;
     }
 
     .container {
-      width: 860px;
+      width: 900px;
       overflow: hidden;
     }
 
     .gallery {
       display: flex;
       gap: 20px;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
 
     img {
-      width: 170px;
-      height: 302px;
+      width: 160px;
+      height: 284px;
       object-fit: cover;
       flex-shrink: 0;
     }
@@ -57,31 +56,31 @@
     <div class="container">
       <div class="gallery" id="gallery">
 
-        <img src="8DCBE729-968A-44F7-9D3B-3E05B3D5E006 2 copy.jpg">
-        <img src="IMG_6573 copy.jpg">
-        <img src="IMG_6777 copy.jpg">
-        <img src="IMG_6829 copy.jpg">
-        <img src="IMG_6920 copy.jpg">
-        <img src="IMG_8433 2 copy.jpg">
-        <img src="IMG_6402 copy.jpg">
-        <img src="IMG_2224 copy.jpg">
-        <img src="IMG_1633 2 copy.jpg">
-        <img src="IMG_1482 copy.jpg">
-        <img src="IMG_0029 copy.jpg">
-        <img src="IMG_1213 2 copy.jpg">
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+        <img src="img5.jpg">
+        <img src="img6.jpg">
+        <img src="img7.jpg">
+        <img src="img8.jpg">
+        <img src="img9.jpg">
+        <img src="img10.jpg">
+        <img src="img11.jpg">
+        <img src="img12.jpg">
 
-        <img src="8DCBE729-968A-44F7-9D3B-3E05B3D5E006 2 copy.jpg">
-        <img src="IMG_6573 copy.jpg">
-        <img src="IMG_6777 copy.jpg">
-        <img src="IMG_6829 copy.jpg">
-        <img src="IMG_6920 copy.jpg">
-        <img src="IMG_8433 2 copy.jpg">
-        <img src="IMG_6402 copy.jpg">
-        <img src="IMG_2224 copy.jpg">
-        <img src="IMG_1633 2 copy.jpg">
-        <img src="IMG_1482 copy.jpg">
-        <img src="IMG_0029 copy.jpg">
-        <img src="IMG_1213 2 copy.jpg">
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+        <img src="img5.jpg">
+        <img src="img6.jpg">
+        <img src="img7.jpg">
+        <img src="img8.jpg">
+        <img src="img9.jpg">
+        <img src="img10.jpg">
+        <img src="img11.jpg">
+        <img src="img12.jpg">
 
       </div>
     </div>
@@ -93,8 +92,8 @@
   <script>
     var gallery = document.getElementById("gallery");
     var index = 0;
-    var size = 190;
-    var offset = 95;
+    var size = 180;
+    var offset = 90;
 
     function update() {
       gallery.style.transform = "translateX(" + (-index * size - offset) + "px)";
