@@ -16,6 +16,7 @@
       font-family: 'arialNarrow', Arial, sans-serif;
       color: white;
       position: relative;
+      overflow: hidden;
     }
 
     .bottom-area {
@@ -37,15 +38,27 @@
       font-size: 22px;
       box-sizing: border-box;
       outline: none;
-      font-family: 'arialNarrow', Arial, sans-serif;
       text-align: center;
     }
 
     .choices {
-      margin-top: 70px;
+      position: relative;
+      top: 40px;
       font-size: 22px;
       word-spacing: 40px;
-      font-family: 'arialNarrow', Arial, sans-serif;
+    }
+
+    .floating {
+      position: absolute;
+      width: 120px;
+      animation: float 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0px); }
     }
   </style>
 </head>
@@ -53,12 +66,55 @@
 <body>
 
   <div class="bottom-area">
-    <input type="text" class="type-box">
+    <input type="text" class="type-box" id="typeBox">
 
     <div class="choices">
       apple cat figure glasses
     </div>
   </div>
+
+  <script>
+    var input = document.getElementById("typeBox");
+
+    input.addEventListener("input", function() {
+      input.value = input.value.toLowerCase();
+    });
+
+    input.addEventListener("keydown", function(event) {
+
+      if (event.key == "Enter") {
+
+        if (input.value == "apple") {
+
+          var images = [
+            "apple1.png",
+            "apple2.png",
+            "apple3.png",
+            "apple4.png",
+            "apple5.png",
+            "apple6.png",
+            "apple7.png"
+          ];
+
+          for (var i = 0; i < images.length; i++) {
+
+            var img = document.createElement("img");
+            img.src = images[i];
+            img.className = "floating";
+
+            img.style.left = Math.random() * 90 + "%";
+            img.style.top = Math.random() * 70 + "%";
+            img.style.width = 80 + Math.random() * 80 + "px";
+
+            document.body.appendChild(img);
+          }
+
+        }
+
+      }
+
+    });
+  </script>
 
 </body>
 </html>
