@@ -6,9 +6,8 @@
   <style>
     body {
       margin: 0;
-      background-color: black;
+      background: white;
       height: 100vh;
-
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,13 +18,12 @@
       height: 10px;
     }
 
-    /* 크롬용 스타일 */
     progress::-webkit-progress-bar {
-      background-color: white;
+      background: lightgray;
     }
 
     progress::-webkit-progress-value {
-      background-color: black;
+      background: black;
     }
   </style>
 </head>
@@ -36,18 +34,18 @@
 
   <script>
     var bar = document.getElementById("bar");
-    var value = 0;
+    var i = 0;
 
-    var loading = setInterval(function() {
-      value++;
-      bar.value = value;
+    var interval = setInterval(function() {
+      i = i + 1;
+      bar.value = i;
 
-      if (value >= 100) {
-        clearInterval(loading);
+      if (i == 100) {
+        clearInterval(interval);
 
         setTimeout(function() {
           window.location.href = "page31.html";
-        }, 500); // 0.5초 후 이동
+        }, 500);
       }
     }, 10);
   </script>
