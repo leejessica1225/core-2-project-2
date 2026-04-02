@@ -11,8 +11,8 @@
 
     body {
       margin: 0;
-      background: black;
-      color: #6A90B2;
+      background: white;
+      color: #0900CF;
       height: 100vh;
 
       display: flex;
@@ -32,17 +32,16 @@
     button {
       margin-top: 200px;
       background: none;
-      border: 1px solid #6A90B2;
-      color: #6A90B2;
-      padding: 10px 20px;
+      border: none;
+      color: #0900CF;
       cursor: pointer;
 
       font-family: 'arialNarrow', Arial, sans-serif;
+      font-size: 16px;
     }
 
-    button:hover {
-      background: #6A90B2;
-      color: black;
+    button:focus {
+      outline: none;
     }
   </style>
 </head>
@@ -54,7 +53,7 @@
   <img src="human.png" class="frame">
   <img src="glasses.png" class="frame">
 
-  <button onclick="goNext()">[enter]</button>
+  <button onclick="goNext()">enter</button>
 
   <script>
     var frames = document.getElementsByClassName("frame");
