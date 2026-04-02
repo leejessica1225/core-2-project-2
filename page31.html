@@ -17,31 +17,31 @@
     .wrapper {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 50px;
     }
 
     button {
       background: none;
       border: none;
-      font-size: 40px;
+      font-size: 42px;
       cursor: pointer;
       color: black;
     }
 
     .container {
-      width: 900px;
+      width: 760px;
       overflow: hidden;
     }
 
     .gallery {
       display: flex;
-      gap: 24px;
-      align-items: center;
+      gap: 20px;
+      transition: transform 0.3s ease;
     }
 
     img {
-      width: 260px;
-      height: 146px;
+      width: 150px;
+      height: 267px;
       object-fit: cover;
       flex-shrink: 0;
       display: block;
@@ -50,9 +50,8 @@
 </head>
 
 <body>
-
   <div class="wrapper">
-    <button onclick="moveLeft()"><</button>
+    <button onclick="moveLeft()">&lt;</button>
 
     <div class="container">
       <div class="gallery" id="gallery">
@@ -84,35 +83,38 @@
       </div>
     </div>
 
-    <button onclick="moveRight()">></button>
+    <button onclick="moveRight()">&gt;</button>
   </div>
 
   <script>
     var gallery = document.getElementById("gallery");
-    var x = 0;
-    var moveAmount = 284;
-    var totalImages = 12;
+    var index = 0;
+    var total = 12;
+    var moveSize = 170;
+
+    function updateGallery() {
+      gallery.style.transform = "translateX(" + (-index * moveSize) + "px)";
+    }
 
     function moveRight() {
-      x = x - moveAmount;
-      gallery.style.transform = "translateX(" + x + "px)";
+      index = index + 1;
 
-      if (x <= -moveAmount * totalImages) {
-        x = 0;
-        gallery.style.transform = "translateX(" + x + "px)";
+      if (index == total) {
+        index = 0;
       }
+
+      updateGallery();
     }
 
     function moveLeft() {
-      if (x >= 0) {
-        x = -moveAmount * totalImages;
-        gallery.style.transform = "translateX(" + x + "px)";
+      index = index - 1;
+
+      if (index < 0) {
+        index = total - 1;
       }
 
-      x = x + moveAmount;
-      gallery.style.transform = "translateX(" + x + "px)";
+      updateGallery();
     }
   </script>
-
 </body>
 </html>
