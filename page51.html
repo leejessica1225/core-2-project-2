@@ -4,129 +4,119 @@
   <title>page31</title>
 
   <style>
-    @font-face {
-      font-family: 'arialNarrow';
-      src: url('Arial Narrow Regular.ttf');
-    }
-
     body {
       margin: 0;
-      background: #0900CF;
+      background: #F6F7F1;
       height: 100vh;
-      font-family: 'arialNarrow', Arial, sans-serif;
-      color: white;
-      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
 
-    .bottom-area {
-      position: absolute;
-      left: 50%;
-      bottom: 160px;
-      transform: translateX(-50%);
-      text-align: center;
-      width: 100%;
+    .wrapper {
+      display: flex;
+      align-items: center;
+      gap: 50px;
     }
 
-    .type-box {
-      width: 520px;
-      height: 65px;
-      border: 1px solid white;
-      background: transparent;
-      color: white;
-      padding: 12px;
-      font-size: 22px;
-      box-sizing: border-box;
-      outline: none;
-      text-align: center;
+    button {
+      background: none;
+      border: none;
+      font-size: 42px;
+      cursor: pointer;
+      color: black;
     }
 
-    .choices {
-      position: relative;
-      top: 40px;
-      font-size: 22px;
-      word-spacing: 40px;
+    .container {
+      width: 860px;
+      overflow: hidden;
     }
 
-    .floating {
-      position: absolute;
-      animation: float 4s ease-in-out infinite;
-      pointer-events: none;
+    .gallery {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.3s ease;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-30px); }
-      100% { transform: translateY(0px); }
+    img {
+      width: 170px;
+      height: 302px;
+      object-fit: cover;
+      flex-shrink: 0;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="bottom-area">
-    <input type="text" class="type-box" id="typeBox">
+  <div class="wrapper">
 
-    <div class="choices">
-      apple cat human glasses
+    <button onclick="left()">&lt;</button>
+
+    <div class="container">
+      <div class="gallery" id="gallery">
+
+        <img src="8DCBE729-968A-44F7-9D3B-3E05B3D5E006 2 copy.jpg">
+        <img src="IMG_6573 copy.jpg">
+        <img src="IMG_6777 copy.jpg">
+        <img src="IMG_6829 copy.jpg">
+        <img src="IMG_6920 copy.jpg">
+        <img src="IMG_8433 2 copy.jpg">
+        <img src="IMG_6402 copy.jpg">
+        <img src="IMG_2224 copy.jpg">
+        <img src="IMG_1633 2 copy.jpg">
+        <img src="IMG_1482 copy.jpg">
+        <img src="IMG_0029 copy.jpg">
+        <img src="IMG_1213 2 copy.jpg">
+
+        <img src="8DCBE729-968A-44F7-9D3B-3E05B3D5E006 2 copy.jpg">
+        <img src="IMG_6573 copy.jpg">
+        <img src="IMG_6777 copy.jpg">
+        <img src="IMG_6829 copy.jpg">
+        <img src="IMG_6920 copy.jpg">
+        <img src="IMG_8433 2 copy.jpg">
+        <img src="IMG_6402 copy.jpg">
+        <img src="IMG_2224 copy.jpg">
+        <img src="IMG_1633 2 copy.jpg">
+        <img src="IMG_1482 copy.jpg">
+        <img src="IMG_0029 copy.jpg">
+        <img src="IMG_1213 2 copy.jpg">
+
+      </div>
     </div>
+
+    <button onclick="right()">&gt;</button>
+
   </div>
 
   <script>
-    var input = document.getElementById("typeBox");
+    var gallery = document.getElementById("gallery");
+    var index = 0;
+    var size = 190;
+    var offset = 95;
 
-    input.addEventListener("input", function() {
-      input.value = input.value.toLowerCase();
-    });
+    function update() {
+      gallery.style.transform = "translateX(" + (-index * size - offset) + "px)";
+    }
 
-    input.addEventListener("keydown", function(event) {
-
-      if (event.key == "Enter") {
-
-        var images = [];
-
-        if (input.value == "apple") {
-          images = [
-            "apple1.png","apple2.png","apple3.png","apple4.png",
-            "apple5.png","apple6.png","apple7.png"
-          ];
-        }
-
-        if (input.value == "cat") {
-          images = [
-            "cat1.png","cat2.png","cat3.png","cat4.png","cat5.png"
-          ];
-        }
-
-        if (input.value == "human") {
-          images = [
-            "human1.png","human2.png","human3.png","human4.png","human5.png"
-          ];
-        }
-
-        if (input.value == "glasses") {
-          images = [
-            "glasses1.png","glasses2.png","glasses3.png","glasses4.png",
-            "glasses5.png","glasses6.png","glasses7.png","glasses8.png"
-          ];
-        }
-
-        for (var i = 0; i < images.length; i++) {
-
-          var img = document.createElement("img");
-          img.src = images[i];
-          img.className = "floating";
-
-          img.style.left = Math.random() * 90 + "%";
-          img.style.top = Math.random() * 70 + "%";
-          img.style.width = 140 + Math.random() * 120 + "px";
-
-          document.body.appendChild(img);
-        }
-
+    function right() {
+      index = index + 1;
+      if (index == 12) {
+        index = 0;
       }
+      update();
+    }
 
-    });
+    function left() {
+      index = index - 1;
+      if (index < 0) {
+        index = 11;
+      }
+      update();
+    }
+
+    update();
   </script>
 
 </body>
