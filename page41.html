@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page 41</title>
-
+  <title>starbutton</title>
   <style>
+
     @font-face {
       font-family: 'Romantic';
       src: url('ROMANTIC.TTF');
@@ -11,101 +11,111 @@
 
     body {
       margin: 0;
-      background-image: url("59067254a59f3ff15c59d062832650a2 (1).jpg");
+      font-family: 'Romantic';
+    }
+
+    .page {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      background-image: url("22b9dc20c0b15fec81a725ba7db205e0 (1).jpg");
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      height: 100vh;
-      font-family: 'Romantic', Arial, sans-serif;
-      position: relative;
       overflow: hidden;
     }
+    
+    .all-stars {
+      display: none;
+    }
 
-    .box {
-      width: 820px;
-      height: 340px;
-      padding: 30px;
-      box-sizing: border-box;
-      background: rgba(70, 80, 110, 0.45);
-      border: none;        
-      border-radius: 0;      
+    @keyframes starGlow {
+      0%   { text-shadow: 0px 0px 5px rgba(255,255,255,0.5), 0px 0px 10px rgba(255,255,255,0.3); }
+      50%  { text-shadow: 0px 0px 15px white, 0px 0px 30px white, 0px 0px 45px rgba(255,255,255,0.5); }
+      100% { text-shadow: 0px 0px 5px rgba(255,255,255,0.5), 0px 0px 10px rgba(255,255,255,0.3); }
+    }
+
+    .star {
       position: absolute;
-      left: 50%;
-      bottom: 40px;
-      transform: translateX(-50%);
+      font-size: 30px;
+      color: #ffe899;
+      animation: starGlow 1.5s infinite;
     }
 
-    #text {
-      white-space: pre-line;
-      font-size: 24px;
-      line-height: 1.4;
-      color: white;
-      height: 190px;
-      margin-bottom: 20px;
-    }
-
-    .input-box {
-      width: 100%;
-      height: 50px;
-      padding: 0 14px;
-      box-sizing: border-box;
+    .bulb-button {
+      position: absolute;
+      bottom: 120px;
+      left: 120px;
+      font-size: 80px;
+      background: none;
       border: none;
-      background: rgba(255, 255, 255, 0.18);
-      color: white;
-      font-size: 24px;
-      font-family: 'Romantic', Arial, sans-serif;
-      outline: none;
-      margin-top: 20px;
+      cursor: pointer;
+      transform: rotate(-20deg);
+      filter: drop-shadow(0px 0px 15px orange);
     }
 
-    .input-box::placeholder {
+    .home {
+      position: fixed;
+      top: 40px;
+      right: 40px;
       color: white;
-      opacity: 1;
+      text-decoration: none;
+      font-size: 28px;
+      font-family: 'Romantic';
     }
+
   </style>
 </head>
-
 <body>
+  <div class="page">
 
-  <div class="box">
-    <div id="text"></div>
+    <div class="all-stars" id="myStars">
+      <div class="star" style="top:5%; left:45%;">★</div>
+      <div class="star" style="top:3%; left:65%;">★</div>
+      <div class="star" style="top:8%; left:30%;">★</div>
+      <div class="star" style="top:12%; left:55%;">★</div>
+      <div class="star" style="top:15%; left:80%;">★</div>
+      <div class="star" style="top:18%; left:20%;">★</div>
+      <div class="star" style="top:22%; left:70%;">★</div>
+      <div class="star" style="top:25%; left:40%;">★</div>
+      <div class="star" style="top:28%; left:85%;">★</div>
+      <div class="star" style="top:30%; left:10%;">★</div>
+      <div class="star" style="top:35%; left:60%;">★</div>
+      <div class="star" style="top:38%; left:25%;">★</div>
+      <div class="star" style="top:40%; left:75%;">★</div>
+      <div class="star" style="top:42%; left:50%;">★</div>
+      <div class="star" style="top:45%; left:90%;">★</div>
+      <div class="star" style="top:48%; left:35%;">★</div>
+      <div class="star" style="top:52%; left:68%;">★</div>
+      <div class="star" style="top:55%; left:15%;">★</div>
+      <div class="star" style="top:58%; left:82%;">★</div>
+      <div class="star" style="top:60%; left:45%;">★</div>
+      <div class="star" style="top:65%; left:55%;">★</div>
+      <div class="star" style="top:70%; left:30%;">★</div>
+      <div class="star" style="top:72%; left:78%;">★</div>
+      <div class="star" style="top:75%; left:92%;">★</div>
+      <div class="star" style="top:80%; left:62%;">★</div>
+    </div>
 
-    <input
-      type="text"
-      id="input"
-      class="input-box"
-      placeholder="type what you want to find"
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-    >
+    <button class="bulb-button" onclick="toggleStars()">💡</button>
+
+    <a href="index.html" class="home">home</a>
+
   </div>
 
   <script>
-    var message = "there is something in the distance.\n\nnot lost.\nnot found.\n\njust... waiting.";
-    var i = 0;
-    var text = document.getElementById("text");
-    var input = document.getElementById("input");
 
-    function typeText() {
-      if (i < message.length) {
-        text.innerHTML = text.innerHTML + message.charAt(i);
-        i = i + 1;
-        setTimeout(typeText, 60);
+    var starsOnOrOff = "off";
+
+    function toggleStars() {
+      if (starsOnOrOff == "off") {
+        document.getElementById("myStars").style.display = "block";
+        starsOnOrOff = "on";
+      } else {
+        document.getElementById("myStars").style.display = "none";
+        starsOnOrOff = "off";
       }
     }
 
-    typeText();
-
-    input.addEventListener("keydown", function(event) {
-      if (event.key == "Enter") {
-        setTimeout(function() {
-          window.location.href = "page44.html";
-        }, 500);
-      }
-    });
   </script>
-
 </body>
 </html>
