@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loading Page</title>
+
+  <style>
+    @font-face {
+      font-family: 'arialNarrow';
+      src: url('Arial Narrow Regular.ttf');
+    }
+
+    body {
+      margin: 0;
+      background: black;
+      color: #6A90B2;
+      height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      font-family: 'arialNarrow', Arial, sans-serif;
+    }
+
+    img {
+      width: 150px;
+      position: absolute;
+      display: none;
+    }
+
+    button {
+      margin-top: 200px;
+      background: none;
+      border: 1px solid #6A90B2;
+      color: #6A90B2;
+      padding: 10px 20px;
+      cursor: pointer;
+
+      font-family: 'arialNarrow', Arial, sans-serif;
+    }
+
+    button:hover {
+      background: #6A90B2;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="apple.png" class="frame">
+  <img src="cat.png" class="frame">
+  <img src="human.png" class="frame">
+  <img src="glasses.png" class="frame">
+
+  <button onclick="goNext()">[enter]</button>
+
+  <script>
+    var frames = document.getElementsByClassName("frame");
+    var i = 0;
+
+    function changeImage() {
+      for (var j = 0; j < frames.length; j++) {
+        frames[j].style.display = "none";
+      }
+
+      frames[i].style.display = "block";
+
+      i++;
+
+      if (i >= frames.length) {
+        i = 0;
+      }
+    }
+
+    setInterval(changeImage, 120);
+
+    function goNext() {
+      setTimeout(function() {
+        window.location.href = "page31.html";
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
