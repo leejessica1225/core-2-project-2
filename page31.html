@@ -43,7 +43,6 @@
       height: 284px;
       object-fit: cover;
       flex-shrink: 0;
-      display: block;
     }
   </style>
 </head>
@@ -70,19 +69,6 @@
         <img src="img11Small.jpeg">
         <img src="img12Small.jpeg">
 
-        <img src="img1Small.jpeg">
-        <img src="img2Small.jpeg">
-        <img src="img3Small.jpeg">
-        <img src="img4Small.jpeg">
-        <img src="img5Small.jpeg">
-        <img src="img6Small.jpeg">
-        <img src="img7Small.jpeg">
-        <img src="img8Small.jpeg">
-        <img src="img9Small.jpeg">
-        <img src="img10Small.jpeg">
-        <img src="img11Small.jpeg">
-        <img src="img12Small.jpeg">
-
       </div>
     </div>
 
@@ -92,31 +78,29 @@
 
   <script>
     var gallery = document.getElementById("gallery");
-    var index = 0;
     var size = 180;
-    var offset = 90;
-
-    function update() {
-      gallery.style.transform = "translateX(" + (-index * size - offset) + "px)";
-    }
 
     function right() {
-      index = index + 1;
-      if (index == 12) {
-        index = 0;
-      }
-      update();
+      gallery.style.transition = "transform 0.3s";
+      gallery.style.transform = "translateX(-" + size + "px)";
+
+      setTimeout(function() {
+        gallery.style.transition = "none";
+        gallery.appendChild(gallery.firstElementChild);
+        gallery.style.transform = "translateX(0)";
+      }, 300);
     }
 
     function left() {
-      index = index - 1;
-      if (index < 0) {
-        index = 11;
-      }
-      update();
-    }
+      gallery.style.transition = "none";
+      gallery.insertBefore(gallery.lastElementChild, gallery.firstElementChild);
+      gallery.style.transform = "translateX(-" + size + "px)";
 
-    update();
+      setTimeout(function() {
+        gallery.style.transition = "transform 0.3s";
+        gallery.style.transform = "translateX(0)";
+      }, 10);
+    }
   </script>
 
 </body>
