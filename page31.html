@@ -29,19 +29,19 @@
     }
 
     .container {
-      width: 760px;
+      width: 860px;
       overflow: hidden;
     }
 
     .gallery {
       display: flex;
-      gap: 20px;
+      gap: 22px;
       transition: transform 0.3s ease;
     }
 
     img {
-      width: 150px;
-      height: 267px;
+      width: 170px;
+      height: 302px;
       object-fit: cover;
       flex-shrink: 0;
       display: block;
@@ -89,17 +89,17 @@
   <script>
     var gallery = document.getElementById("gallery");
     var index = 0;
-    var total = 12;
-    var moveSize = 170;
+    var moveSize = 192;
+    var startOffset = 96;
 
     function updateGallery() {
-      gallery.style.transform = "translateX(" + (-index * moveSize) + "px)";
+      gallery.style.transform = "translateX(" + (-index * moveSize - startOffset) + "px)";
     }
 
     function moveRight() {
       index = index + 1;
 
-      if (index == total) {
+      if (index == 12) {
         index = 0;
       }
 
@@ -110,11 +110,13 @@
       index = index - 1;
 
       if (index < 0) {
-        index = total - 1;
+        index = 11;
       }
 
       updateGallery();
     }
+
+    updateGallery();
   </script>
 </body>
 </html>
