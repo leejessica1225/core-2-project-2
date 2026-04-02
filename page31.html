@@ -8,82 +8,83 @@
       margin: 0;
       background: white;
       height: 100vh;
+
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .gallery {
+    .wrapper {
       display: flex;
       align-items: center;
       gap: 20px;
     }
 
-    button {
-      width: 50px;
-      height: 50px;
-      font-size: 30px;
-      background: white;
-      border: 1px solid black;
-      cursor: pointer;
+    .container {
+      width: 800px;
+      overflow: hidden;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 20px;
+      transition: 0.3s;
     }
 
     img {
-      width: 500px;
-      height: 350px;
+      width: 180px;
+      height: 250px;
       object-fit: cover;
-      border: 1px solid black;
+    }
+
+    button {
+      font-size: 30px;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="gallery">
-    <button onclick="prevPhoto()"><</button>
+  <div class="wrapper">
 
-    <img id="photo" src="1.jpg">
+    <button onclick="moveLeft()"><</button>
 
-    <button onclick="nextPhoto()">></button>
+    <div class="container">
+      <div class="gallery" id="gallery">
+        <img src="1.jpg">
+        <img src="2.jpg">
+        <img src="3.jpg">
+        <img src="4.jpg">
+        <img src="5.jpg">
+        <img src="6.jpg">
+        <img src="7.jpg">
+        <img src="8.jpg">
+        <img src="9.jpg">
+        <img src="10.jpg">
+        <img src="11.jpg">
+        <img src="12.jpg">
+      </div>
+    </div>
+
+    <button onclick="moveRight()">></button>
+
   </div>
 
   <script>
-    var images = [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg",
-      "6.jpg",
-      "7.jpg",
-      "8.jpg",
-      "9.jpg",
-      "10.jpg",
-      "11.jpg",
-      "12.jpg"
-    ];
+    var gallery = document.getElementById("gallery");
+    var x = 0;
 
-    var index = 0;
-    var photo = document.getElementById("photo");
-
-    function nextPhoto() {
-      index = index + 1;
-
-      if (index > 11) {
-        index = 0;
-      }
-
-      photo.src = images[index];
+    function moveRight() {
+      x = x - 200;
+      gallery.style.transform = "translateX(" + x + "px)";
     }
 
-    function prevPhoto() {
-      index = index - 1;
-
-      if (index < 0) {
-        index = 11;
-      }
-
-      photo.src = images[index];
+    function moveLeft() {
+      x = x + 200;
+      gallery.style.transform = "translateX(" + x + "px)";
     }
   </script>
 
