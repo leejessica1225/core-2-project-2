@@ -6,42 +6,45 @@
   <style>
     body {
       margin: 0;
-      background: white;
+      background: #F6F7F1;
       height: 100vh;
-
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
     .wrapper {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 40px;
+    }
+
+    button {
+      background: none;
+      border: none;
+      font-size: 40px;
+      cursor: pointer;
+      color: black;
     }
 
     .container {
-      width: 800px;
+      width: 900px;
       overflow: hidden;
     }
 
     .gallery {
       display: flex;
-      gap: 20px;
-      transition: 0.3s;
+      gap: 24px;
+      align-items: center;
     }
 
     img {
-      width: 180px;
-      height: 250px;
+      width: 260px;
+      height: 146px;
       object-fit: cover;
-    }
-
-    button {
-      font-size: 30px;
-      background: none;
-      border: none;
-      cursor: pointer;
+      flex-shrink: 0;
+      display: block;
     }
   </style>
 </head>
@@ -49,7 +52,6 @@
 <body>
 
   <div class="wrapper">
-
     <button onclick="moveLeft()"><</button>
 
     <div class="container">
@@ -66,24 +68,48 @@
         <img src="10.jpg">
         <img src="11.jpg">
         <img src="12.jpg">
+
+        <img src="1.jpg">
+        <img src="2.jpg">
+        <img src="3.jpg">
+        <img src="4.jpg">
+        <img src="5.jpg">
+        <img src="6.jpg">
+        <img src="7.jpg">
+        <img src="8.jpg">
+        <img src="9.jpg">
+        <img src="10.jpg">
+        <img src="11.jpg">
+        <img src="12.jpg">
       </div>
     </div>
 
     <button onclick="moveRight()">></button>
-
   </div>
 
   <script>
     var gallery = document.getElementById("gallery");
     var x = 0;
+    var moveAmount = 284;
+    var totalImages = 12;
 
     function moveRight() {
-      x = x - 200;
+      x = x - moveAmount;
       gallery.style.transform = "translateX(" + x + "px)";
+
+      if (x <= -moveAmount * totalImages) {
+        x = 0;
+        gallery.style.transform = "translateX(" + x + "px)";
+      }
     }
 
     function moveLeft() {
-      x = x + 200;
+      if (x >= 0) {
+        x = -moveAmount * totalImages;
+        gallery.style.transform = "translateX(" + x + "px)";
+      }
+
+      x = x + moveAmount;
       gallery.style.transform = "translateX(" + x + "px)";
     }
   </script>
