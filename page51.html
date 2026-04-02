@@ -1,63 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>page31</title>
+<style>
+  @font-face {
+    font-family: 'arialNarrow';
+    src: url('Arial Narrow Regular.ttf');
+  }
 
-  <style>
-    @font-face {
-      font-family: 'arialNarrow';
-      src: url('Arial Narrow Regular.ttf');
-    }
+  body {
+    margin: 0;
+    background: #0900CF;
+    height: 100vh;
+    font-family: 'arialNarrow', Arial, sans-serif;
+    color: white;
+    position: relative;
+  }
 
-    body {
-      margin: 0;
-      background: #0900CF;
-      height: 100vh;
-      font-family: 'arialNarrow', Arial, sans-serif;
-      color: white;
-      position: relative;
-    }
+  .bottom-area {
+    position: absolute;
+    left: 50%;
+    bottom: 160px; 
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+  }
 
-    .bottom-area {
-      position: absolute;
-      left: 50%;
-      bottom: 80px;
-      transform: translateX(-50%);
-      text-align: center;
-      width: 100%;
-    }
+  .type-box {
+    width: 520px;
+    height: 65px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    padding: 12px;
+    font-size: 22px;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'arialNarrow', Arial, sans-serif;
 
-    .type-box {
-      width: 520px;        
-      height: 65px;      
-      border: 1px solid white;
-      background: transparent;
-      color: white;
-      padding: 12px;
-      font-size: 22px;     
-      box-sizing: border-box;
-      outline: none;
-      font-family: 'arialNarrow', Arial, sans-serif;
-    }
+    text-align: center; 
+  }
 
-    .choices {
-      margin-top: 40px;   
-      font-size: 22px;     
-      word-spacing: 40px;   
-      font-family: 'arialNarrow', Arial, sans-serif;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="bottom-area">
-    <input type="text" class="type-box">
-
-    <div class="choices">
-      apple cat figure glasses
-    </div>
-  </div>
-
-</body>
-</html>
+  .choices {
+    margin-top: 40px;
+    font-size: 22px;
+    word-spacing: 40px;
+    font-family: 'arialNarrow', Arial, sans-serif;
+  }
+</style>
