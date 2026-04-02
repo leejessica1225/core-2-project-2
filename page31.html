@@ -30,12 +30,34 @@
     .container {
       width: 900px;
       overflow: hidden;
+      position: relative;
+    }
+
+    /* 좌우 흐림 효과 */
+    .container::before,
+    .container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .container::before {
+      left: 0;
+      background: linear-gradient(to right, #F6F7F1, transparent);
+    }
+
+    .container::after {
+      right: 0;
+      background: linear-gradient(to left, #F6F7F1, transparent);
     }
 
     .gallery {
       display: flex;
       gap: 20px;
-      transition: transform 0.3s;
     }
 
     img {
@@ -43,6 +65,13 @@
       height: 284px;
       object-fit: cover;
       flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    /* hover 확대 */
+    img:hover {
+      transform: scale(1.15);
+      z-index: 1;
     }
   </style>
 </head>
