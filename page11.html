@@ -44,14 +44,8 @@
       display: inline-block;
     }
 
-    input {
-      border: none;
-      outline: none;
-      background: transparent;
-      color: #66F6BB;
-      font-size: 60px;
-      font-family: 'DepartureMono';
-      width: 200px;
+    #typedText {
+      display: none;
     }
 
     .cursor {
@@ -68,8 +62,14 @@
       100% {opacity: 1;}
     }
 
-    #inputLine {
+    #cursorBottom {
       display: none;
+      margin-left: 6px;
+    }
+
+    #answer {
+      opacity: 0;
+      position: absolute;
     }
   </style>
 </head>
@@ -83,12 +83,14 @@
       <div class="cursor" id="cursorTop"></div>
     </div>
 
-    <div class="line2" id="inputLine">
-      <input id="answer" type="text" autocomplete="off">
-      <div class="cursor"></div>
+    <div class="line2">
+      <div id="typedText"></div>
+      <div class="cursor" id="cursorBottom"></div>
     </div>
 
   </div>
+
+  <input id="answer" type="text" autocomplete="off">
 
   <script>
     var text = "READY?";
@@ -110,7 +112,8 @@
         started = true;
 
         document.getElementById("cursorTop").style.display = "none";
-        document.getElementById("inputLine").style.display = "flex";
+        document.getElementById("typedText").style.display = "block";
+        document.getElementById("cursorBottom").style.display = "block";
 
         document.getElementById("answer").focus();
       }
@@ -118,6 +121,7 @@
 
     document.getElementById("answer").oninput = function() {
       this.value = this.value.toUpperCase();
+      document.getElementById("typedText").innerHTML = this.value;
     };
 
     document.getElementById("answer").addEventListener("keydown", function(event) {
