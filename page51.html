@@ -50,7 +50,6 @@
 
     .floating {
       position: absolute;
-      width: 120px;
       animation: float 4s ease-in-out infinite;
       pointer-events: none;
     }
@@ -84,31 +83,45 @@
 
       if (event.key == "Enter") {
 
+        var images = [];
+
         if (input.value == "apple") {
-
-          var images = [
-            "apple1.png",
-            "apple2.png",
-            "apple3.png",
-            "apple4.png",
-            "apple5.png",
-            "apple6.png",
-            "apple7.png"
+          images = [
+            "apple1.png","apple2.png","apple3.png","apple4.png",
+            "apple5.png","apple6.png","apple7.png"
           ];
+        }
 
-          for (var i = 0; i < images.length; i++) {
+        if (input.value == "cat") {
+          images = [
+            "cat1.png","cat2.png","cat3.png","cat4.png","cat5.png"
+          ];
+        }
 
-            var img = document.createElement("img");
-            img.src = images[i];
-            img.className = "floating";
+        if (input.value == "human") {
+          images = [
+            "human1.png","human2.png","human3.png","human4.png","human5.png"
+          ];
+        }
 
-            img.style.left = Math.random() * 90 + "%";
-            img.style.top = Math.random() * 70 + "%";
-            img.style.width = 140 + Math.random() * 120 + "px";
+        if (input.value == "glasses") {
+          images = [
+            "glasses1.png","glasses2.png","glasses3.png","glasses4.png",
+            "glasses5.png","glasses6.png","glasses7.png","glasses8.png"
+          ];
+        }
 
-            document.body.appendChild(img);
-          }
+        for (var i = 0; i < images.length; i++) {
 
+          var img = document.createElement("img");
+          img.src = images[i];
+          img.className = "floating";
+
+          img.style.left = Math.random() * 90 + "%";
+          img.style.top = Math.random() * 70 + "%";
+          img.style.width = 140 + Math.random() * 120 + "px";
+
+          document.body.appendChild(img);
         }
 
       }
