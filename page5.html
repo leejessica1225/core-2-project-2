@@ -18,26 +18,30 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
 
       font-family: 'arialNarrow', Arial, sans-serif;
     }
 
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
     img {
       width: 200px;
-      position: absolute;
       display: none;
     }
 
     button {
-      margin-top: 220px;
       background: none;
       border: none;
       color: #0900CF;
       cursor: pointer;
 
       font-family: 'arialNarrow', Arial, sans-serif;
-      font-size: 22px; 
+      font-size: 22px;
     }
 
     button:focus {
@@ -48,12 +52,14 @@
 
 <body>
 
-  <img src="apple.png" class="frame">
-  <img src="cat.png" class="frame">
-  <img src="human.png" class="frame">
-  <img src="glasses.png" class="frame">
+  <div class="container">
+    <img src="apple.png" class="frame">
+    <img src="cat.png" class="frame">
+    <img src="human.png" class="frame">
+    <img src="glasses.png" class="frame">
 
-  <button onclick="goNext()">[enter]</button>
+    <button onclick="goNext()">[enter]</button>
+  </div>
 
   <script>
     var frames = document.getElementsByClassName("frame");
