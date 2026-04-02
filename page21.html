@@ -1,71 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Search Page</title>
+  <title>scribble</title>
 
   <style>
-    @font-face {
-      font-family: 'cactus';
-      src: url('Cactus-Jack.ttf');
-    }
-
     body {
       background-color: #fdfcf7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
       margin: 0;
-      font-family: 'cactus';
-      color: black;
+      font-size: 30px;
+      position: relative;
     }
 
     .box {
-      width: 600px;
+      width: 400px;
       border: 2px solid black;
-      padding: 20px 30px;
-      font-size: 40px;
+      padding: 10px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fdfcf7;
+      z-index: 10;
     }
 
     input {
       border: none;
       outline: none;
-      font-size: 40px;
-      font-family: 'cactus';
+      font-size: 30px;
       width: 70%;
-      background-color: transparent;
+      background: transparent;
     }
 
-    input::placeholder {
-      color: black;
-      opacity: 0.5;
-    }
-
-    .search-btn {
+    button {
+      font-size: 20px;
       cursor: pointer;
-      transition: 0.1s;
     }
 
-    .search-btn:active {
-      transform: translateY(4px);   
-      opacity: 0.6;               
+    .random-img {
+      position: absolute;
+      width: 80px;
     }
   </style>
 </head>
+
 <body>
 
-  <div class="box">
-    <input id="text" type="text" placeholder="type something...">
-    <span class="search-btn" onclick="go()">search</span>
+  <div class="box" id="box">
+    <input type="text" placeholder="type scribble...">
+    <button onclick="go()">go!</button>
   </div>
 
   <script>
     function go() {
-      let word = document.getElementById("text").value;
-      console.log(word);
+
+      let images = [
+        "Group 60.png",
+        "Group 61.png",
+        "Group 62.png",
+        "Group 63.png",
+        "Group 64.png",
+        "Group 65.png"
+      ];
+
+      let randomIndex = Math.floor(Math.random() * images.length);
+      let chosenImage = images[randomIndex];
+
+      let img = document.createElement("img");
+      img.src = chosenImage;
+      img.className = "random-img";
+
+      let screenWidth = window.innerWidth;
+      let screenHeight = window.innerHeight;
+
+      let box = document.getElementById("box");
+      let rect = box.getBoundingClientRect();
+
+      let x, y;
+
+      do {
+        x = Math.random() * (screenWidth - 80);
+        y = Math.random() * (screenHeight - 80);
+      } while (
+        x < rect.right &&
+        x + 80 > rect.left &&
+        y < rect.bottom &&
+        y + 80 > rect.top
+      );
+
+      img.style.left = x + "px";
+      img.style.top = y + "px";
+
+      document.body.appendChild(img);
     }
   </script>
 
