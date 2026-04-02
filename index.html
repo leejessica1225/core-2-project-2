@@ -15,12 +15,19 @@
 
     .row {
       display: flex;
+      gap: 10px;
     }
 
     .box {
       width: 150px;
       height: 150px;
       overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .box:hover {
+      width: 180px;
+      height: 180px;
     }
 
     .box img {
@@ -40,33 +47,23 @@
   <div class="row">
 
     <a href="page1.html">
-      <div class="box">
-        <img src="screenshot1.jpeg">
-      </div>
+      <div class="box"><img src="img1.jpg"></div>
     </a>
 
     <a href="page2.html">
-      <div class="box">
-        <img src="screenshot2.jpeg">
-      </div>
+      <div class="box"><img src="img2.jpg"></div>
     </a>
 
     <a href="page4.html">
-      <div class="box">
-        <img src="screenshot3.jpeg">
-      </div>
+      <div class="box"><img src="img3.jpg"></div>
     </a>
 
     <a href="page5.html">
-      <div class="box">
-        <img src="screenshot4.jpeg">
-      </div>
+      <div class="box"><img src="img4.jpg"></div>
     </a>
 
     <a href="page3.html">
-      <div class="box">
-        <img src="screenshot5.jpeg">
-      </div>
+      <div class="box"><img src="img5.jpg"></div>
     </a>
 
   </div>
